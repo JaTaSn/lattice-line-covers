@@ -1,18 +1,24 @@
 # lattice-line-covers
 
-A family of straight lines that covers every point of the integer lattice \(\mathbb{Z}^2\), such
-that
+A family of straight lines, each passing through at least two points of the integer lattice
+\(\mathbb{Z}^2\) (so each has a well-defined, rational *direction*), that covers every point of the
+lattice, such that
 
 - every lattice point lies on at least one line in the family,
 - no two lines of *different* direction ever cross at a lattice point (they may cross elsewhere),
   and
 - the set of directions used by the family is dense in the space of all line directions
-  (\(\mathbb{RP}^1\)) — it comes arbitrarily close to every possible direction.
+  (\(\mathbb{RP}^1\)) — it comes arbitrarily close to every possible direction, even though only
+  countably many (rational) directions are ever actually realized.
 
 The construction and proof are formalized end-to-end in [Lean 4](https://lean-lang.org/) +
 [Mathlib](https://leanprover-community.github.io/): zero `sorry`, zero custom axioms, resting only
 on Lean's three standard foundational axioms. See [`lean/PROOF.md`](lean/PROOF.md) for the exact
 theorem statement and a non-expert guide to checking this yourself.
+
+![Realized line-directions of the density construction, plotted after 10, 20, and 100 steps — the
+directions spread out steadily around the circle of directions, steered toward golden-angle
+equidistribution.](verification-code/density_directions.png)
 
 ## Repository layout
 
@@ -31,7 +37,7 @@ theorem statement and a non-expert guide to checking this yourself.
   hallucinated or misremembered references.
 - **`verification-code/`** — small numerical scripts (Python) used while developing the informal
   proof, to sanity-check the construction and its density claim before formalizing them, plus their
-  result logs under `results/`.
+  result logs under `results/` and the `density_directions.png` plot shown above.
 
 ## Origin
 
