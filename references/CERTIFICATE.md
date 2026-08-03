@@ -43,13 +43,14 @@ Brasiliensis Mathematicae **2** (1950), 113–123.
 covering systems of congruences a classical theory "introduced by Erdős `\cite{Erdos1950}` to show
 that a positive proportion of the integers are not of the form $2^k+p$ for $p$ prime."
 
-**Primary source: available**, found 2026-08-03 (after the first draft of this certificate, which
-had marked this reference unavailable) — `ai-workspace/lattice-line-covers/literature/erdos1950_2k-plus-p.pdf`,
-a scanned copy from the Rényi Institute's open Erdős archive
-(`https://users.renyi.hu/~p_erdos/Erdos.html`, catalogued there as `1950-07.pdf`), matched by exact
-title, journal, volume and page range against the citation used in the article. Content and PDF
-metadata (an OCR scan dated 2004–2006, well before this project existed) are both consistent with a
-genuine period scan, not a fabrication.
+**Primary source: available**, found and added by Jan, 2026-08-03 (after the first draft of this
+certificate, which had marked this reference unavailable) —
+`ai-workspace/lattice-line-covers/literature/erdos1950_2k-plus-p.pdf`, a scanned copy from the
+Rényi Institute's open Erdős archive (`https://www.renyi.hu/~p_erdos/`, paper at
+`https://www.renyi.hu/~p_erdos/1950-07.pdf`), matched by exact title, journal, volume and page
+range against the citation used in the article. Content and PDF metadata (an OCR scan dated
+2004–2006, well before this project existed) are both consistent with a genuine period scan, not a
+fabrication.
 
 **Verified quotation** (Theorem 3, p. 113 — exactly the positive-density claim the article
 attributes to this paper). Quoted as extracted by `pdftotext`, OCR artifacts and all, since that is
