@@ -1,14 +1,14 @@
 # lattice-line-covers
 
 A family of straight lines, each passing through at least two points of the integer lattice
-\(\mathbb{Z}^2\) (so each has a well-defined, rational *direction*), that covers every point of the
+$\mathbb{Z}^2$ (so each has a well-defined, rational *direction*), that covers every point of the
 lattice, such that
 
 - every lattice point lies on at least one line in the family,
 - no two lines of *different* direction ever cross at a lattice point (they may cross elsewhere),
   and
 - the set of directions used by the family is dense in the space of all line directions
-  (\(\mathbb{RP}^1\)) — it comes arbitrarily close to every possible direction, even though only
+  ($\mathbb{RP}^1$) — it comes arbitrarily close to every possible direction, even though only
   countably many (rational) directions are ever actually realized.
 
 The construction and proof are formalized end-to-end in [Lean 4](https://lean-lang.org/) +
@@ -31,7 +31,7 @@ equidistribution.](verification-code/density_directions.png)
     tackled in, and the plan/delegate/verify methodology used throughout.
   - `HISTORY.md` (forthcoming) — a condensed, narrated history of how the formalization
     progressed, back and forth, from the first lemma to the finished proof.
-- **`references/`** — [`CERTIFICATE.md`](references/CERTIFICATE.md), a "certificate of existence"
+- **`references/`** — [`REFERENCES.md`](references/REFERENCES.md), a "certificate of existence"
   for every reference cited in the article: a verbatim, source-checked quotation of the claim being
   cited, or an explicit note when no primary source could be located. Built to guard against
   hallucinated or misremembered references.
