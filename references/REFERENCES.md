@@ -10,6 +10,12 @@ is worth being able to show, plainly and checkably, that this did not happen her
 the article cites is a real, locatable publication, and every substantive claim attributed to a
 reference is backed by text the author (or a reviewer) can go and read for themselves.
 
+This manuscript may also be deposited on HAL (the French national open archive). As of this
+writing, HAL has no explicit, binding policy on AI/LLM-assisted content comparable to arXiv's —
+only general, non-binding commentary from CCSD (HAL's operator) framing the area as still needing
+new legal and ethical frameworks. The author will inquire directly with HAL before any such
+deposit, applying the same disclosure standard as above regardless of the answer.
+
 This document is that check. For each of the five `\cite{...}` references in the "Related work"
 section of `lattice_line_covers_extended_refs.tex`, it records: the full bibliographic citation;
 which sentence of the article the reference supports (quoted or closely paraphrased, with a line
