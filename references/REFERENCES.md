@@ -25,13 +25,13 @@ obtained — an explicit statement to that effect plus whatever secondary corrob
 sixth entry is included for a closely related paper (Kiselman 2011) that is not currently cited but
 is discussed below.
 
-**One of the five citations (`Corzatt1985`) has no primary-source PDF available in this
-repository** — an old, largely undigitized conference-proceedings venue with no open-access copy
-found. That entry below states this explicitly and quotes nothing from the primary source, relying
-only on secondary corroboration, clearly labeled as such. (An earlier draft of this certificate
-also had no primary source for `Erdos1950`; a legitimate open-access copy was located after that
-draft was written — see entry 1 below, and `ai-workspace/lattice-line-covers/literature/REFERENCES.md`
-for the discovery note.)
+**Update, 2026-08-13: all five citations now have a primary-source PDF available in this
+repository.** `Corzatt1985` was the last holdout — an old, largely undigitized
+conference-proceedings venue with no open-access copy found, until an interlibrary loan copy
+arrived 2026-08-13. (Similarly, an earlier draft of this certificate had no primary source for
+`Erdos1950`; a legitimate open-access copy was located shortly after that draft was written — see
+entry 1 below, and `ai-workspace/lattice-line-covers/literature/REFERENCES.md` for the discovery
+note.)
 
 Every quotation below was copied from the plain-text extraction (`pdftotext -layout`) of the PDF
 files actually present in `ai-workspace/lattice-line-covers/literature/`, read during the
@@ -127,18 +127,29 @@ used here, one rank up."
 Proceedings of the Sundance Conference on Combinatorics and Related Topics (Sundance, Utah, 1985),
 Congressus Numerantium **50**, 129–135.
 
-**Claim supported:** `lattice_line_covers_extended_refs.tex`, lines 369–372 — "Corzatt
-`\cite{Corzatt1985}` **showed** that if a *finite, convex* set of lattice points is covered by $n$
-lines (with no constraint on where the lines may cross), the lines can always be chosen to use at
-most four distinct slopes." (emphasis added — see flag below).
+**Claim supported:** the current preprint (`article/lattice_line_covers_preprint.tex`, line 688)
+says "Corzatt `\cite{Corzatt1985}` **conjectured** that if a *finite, convex* set of lattice points
+is covered by $n$ lines (with no constraint on where the lines may cross), the lines can always be
+chosen to use at most four distinct slopes." (An earlier, now-obsolete draft,
+`lattice_line_covers_extended_refs.tex`, had instead said Corzatt "showed" this — see the resolved
+flag below.)
 
-**Primary source:** **not available in this repository.** Congressus Numerantium is a largely
-undigitized conference-proceedings series and no open-access copy was found (see `REFERENCES.md`,
-item 4). No text is quoted from Corzatt's own paper below.
+**Primary source: now available.** An interlibrary loan copy arrived 2026-08-13 (`subito e.V.`,
+licensed copy supplied for Linköping University Library), local copy at
+`ai-workspace/lattice-line-covers/literature/corzatt1985_congressus-numerantium-50.pdf`. Quoting
+directly from p. 131 of Corzatt's own paper:
 
-**Secondary corroboration**, from Verreault, *Plank theorems and their applications: a survey*,
-arXiv:2203.05540 (`ai-workspace/lattice-line-covers/literature/plank-theorems-survey_arXiv-2203.05540.pdf`,
-read for this certificate) — **as characterized by this survey, not Corzatt's own text**:
+> "The following conjecture appears to be an appropriate analogue to Bang's Theorem in
+> 2-dimensions. At the present time there is little indication as to how to prove the conjecture,
+> but in what follows we will give evidence which supports it.
+> **Conjecture:** If S is a convex set of lattice points and v(S) = n then S can [be covered using
+> at most four distinct slopes]."
+
+This is Corzatt's own explicit labeling — a conjecture, not a theorem.
+
+**Secondary corroboration** (kept for record), from Verreault, *Plank theorems and their
+applications: a survey*, arXiv:2203.05540
+(`ai-workspace/lattice-line-covers/literature/plank-theorems-survey_arXiv-2203.05540.pdf`):
 
 - Bibliographic details, References, p. 44:
 
@@ -146,7 +157,7 @@ read for this certificate) — **as characterized by this survey, not Corzatt's 
   > of the Sundance conference on combinatorics and related topics (Sundance, Utah, 1985), volume
   > 50, pages 129–135, 1985."
 
-  This matches the citation used in `lattice_line_covers_extended_refs.tex` exactly.
+  This matches the citation used in the article exactly.
 
 - Content, p. 24 (discussing "a discrete plank problem"):
 
@@ -154,16 +165,11 @@ read for this certificate) — **as characterized by this survey, not Corzatt's 
   > states that if a convex set of lattice points can be covered by n lines, then these lines can be
   > taken to have at most four different slopes (see Fig. 7 for an example)."
 
-**Flag — apparent inconsistency worth the author's attention:** the survey explicitly calls this
-result "a long-standing ... **conjecture**, due to Corzatt" (not a theorem), and
-`ai-workspace/lattice-line-covers/literature/REFERENCES.md` item 4 already records the same
-reading ("Summary (from secondary sources, not the primary text): **conjectures** ... that the
-lines can always be chosen using at most four distinct slopes"). The article text under
-certification, however, says Corzatt "**showed**" this — wording that reads as a proven theorem.
-Since no primary-source copy of Corzatt (1985) is available to check directly, this discrepancy
-cannot be resolved from the sources in this repository; it is flagged here for the author to check
-against a library copy of Congressus Numerantium 50 (or another secondary source) before
-submission, and to reword as "conjectured" if the survey's characterization is correct.
+**Flag — resolved 2026-08-13.** An earlier draft (`lattice_line_covers_extended_refs.tex`, now
+obsolete) said Corzatt "showed" this result, which would have read as a proven theorem; the survey
+called it a "conjecture," and the primary source now confirms the survey's reading exactly —
+Corzatt's own paper explicitly labels it "Conjecture." The current preprint already uses the
+correct wording ("conjectured"), so **no article change was needed**, only this certificate update.
 
 ---
 
@@ -267,7 +273,7 @@ written under Kiselman's supervision at Uppsala University."
 |---|---|---|---|---|
 | 1 | Erdős (1950) | yes | yes (found 2026-08-03) | yes — verbatim Theorem 3, p. 113 |
 | 2 | Cremona & Koymans (2026) | yes | yes | yes — two verbatim quotes, pp. 1 and 17 |
-| 3 | Corzatt (1985) | yes | no | no — secondary corroboration only; **see inconsistency flag above** |
+| 3 | Corzatt (1985) | yes | yes (arrived 2026-08-13) | yes — verbatim "Conjecture:" statement, p. 131 |
 | 4 | Kiselman (2022) | yes | no | no — no quote, no secondary corroboration sought |
 | 4b | Kiselman (2011) | not currently (candidate swap) | yes | yes — two verbatim quotes, pp. 356–357 |
 | 5 | Uscka-Wehlou (2009) | yes | yes | yes — two verbatim quotes, pp. 13 and 50 |
