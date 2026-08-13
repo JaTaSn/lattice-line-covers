@@ -22,8 +22,11 @@ equidistribution.](verification-code/density_directions.png)
 
 ## Repository layout
 
-- **`article/`** — the publication-track write-up (LaTeX, for arXiv). Currently contains the
-  figures; the article text itself is still being finalized.
+- **`article/`** — the publication-track write-up (LaTeX, for arXiv/HAL/LiTH-MAT-R). The
+  submission-track `.tex` file is a polished, mechanically-derived descendant of a Typst working
+  draft, `lattice_line_covers_pedantic.typ`, kept here unmodified in the form it was actually
+  developed in (annotations, changelog comments, and all) — see [`lean/STRATEGY.md`](lean/STRATEGY.md)
+  for how that draft doubled as the Lean formalization's guide.
 - **`lean/`** — the complete Lean 4 formalization of the main theorem.
   - [`PROOF.md`](lean/PROOF.md) — the theorem statement in plain language, and step-by-step
     instructions to independently verify the proof yourself.

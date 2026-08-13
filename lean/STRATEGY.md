@@ -4,6 +4,34 @@ This document describes *how* the proof in this directory was built — the arch
 and working methodology — as distinct from `PROOF.md` (what was proved) and `../HISTORY.md` (the
 narrative of how the process actually unfolded, including the mistakes found along the way).
 
+## The paper draft as the formalization's working guide
+
+The mathematics was not developed directly in the eventual LaTeX submission file. It was worked out
+in a [Typst](https://typst.app/) working draft, `../article/lattice_line_covers_pedantic.typ`, kept
+in this repository unmodified from its state during active development — the same file used to
+guide the Lean formalization, not a separate specification written after the fact. Two custom
+annotation environments ran throughout that draft:
+
+- **`leanstatus` blocks** — a short note placed directly under each lemma/theorem recording its
+  formalization status as work progressed (not yet started, in progress, proved and independently
+  verified), so the state of the Lean development was always visible in the same document as the
+  mathematical statement it corresponded to, rather than tracked separately.
+- **`pedanticexample` blocks** — working notes only, never intended to survive into the final
+  article (set in red and explicitly labeled as such in the draft itself): a concrete numeric
+  instantiation of a lemma's hypotheses and conclusion, showing both a case where it holds and a
+  case violating one hypothesis, to make abstract statements checkable by eye before — or instead
+  of — formalizing them.
+
+Once the formalization was complete, the submission-track article was produced by mechanically
+stripping every `leanstatus`/`pedanticexample` block and the "Formalization status" section from
+this working draft (see the changelog comment at the top of the `.typ` file itself for the exact
+history of that split). The working draft is kept here as-is — warts, annotations, changelog
+comments and all — as a transparent record of how the proof was actually built, in the same spirit
+as `references/REFERENCES.md`'s certificate-of-existence approach to citations: showing the actual
+process rather than only asserting a clean result. It is not maintained further and may not compile
+standalone in this location (it depends on figure assets from the working repository's own
+directory layout) — it is included for documentation, not as a build target.
+
 ## Bottom-up, matching the paper's own dependency order
 
 The paper's proof splits into five pieces, each depending on the ones before it. The formalization
