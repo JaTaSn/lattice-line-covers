@@ -25,6 +25,7 @@
 \usepackage{hyperref}
 \usepackage{orcidlink}
 \usepackage{graphicx}
+\emergencystretch=3em
 \usepackage{tikz}
 
 \theoremstyle{definition}
@@ -45,7 +46,7 @@
 
 \begin{document}
 
-\title{On the directions occurring in lattice-line coverings of the integer plane}
+\title[Lattice-line directions]{On the directions occurring in lattice-line coverings of the integer plane}
 \author{Jan Snellman \orcidlink{0009-0002-6676-5068}}
 \address{Matematiska Institutionen, Linköpings Universitet, 581 83 Linköping, Sweden}
 \email{jan.snellman@liu.se}
@@ -77,16 +78,15 @@ Consider the integer lattice \(\Z^2\subset\R^2\). We wish to cover every point o
     \label{eq:irrational-line}
     L_z\cap\Z^2=\{z\}
   \end{equation}
-  (a second lattice point on \(L_z\) would force \(\alpha_z\in\mathbb Q\)), so distinct such lines never
-  share a lattice point, and choosing the \(\alpha_z\) to range over a dense (indeed, all) set of
+  (a second lattice point on \(L_z\) would force \(\alpha_z\in\mathbb Q\)), so distinct such lines
+  never share a lattice point, and choosing the \(\alpha_z\) to range over a dense (indeed, all) set of
   irrational directions already realizes an uncountable dense set of directions. Everything of
   interest in this note therefore concerns the restriction to \emph{lattice lines}: lines
   containing at least two (hence, by the same argument, infinitely many) points of \(\Z^2\),
   equivalently lines of rational direction. This restriction is in force throughout.
 \end{remark}
 
-We now formalize the objects of study as explicit definitions, rather than leaving them as prose,
-so that every later lemma statement can refer back to them unambiguously.
+We now formalize the objects of study as explicit definitions.
 
 \begin{definition}[Primitive direction]
   \label{def:direction}
@@ -295,6 +295,14 @@ Our main result:
   has \emph{some} value of \(u-v\).
 \end{proof}
 
+
+Recall that by \emph{Farey neighbors} is meant two primitive directions
+\[d_1=(p_1,q_1), \quad d_2=(p_2,q_2)\]
+(equivalently, fractions \(p_1/q_1\), \(p_2/q_2\) in lowest
+terms) with
+\[|p_1q_2-p_2q_1|=1.\]
+This is exactly the \(|\Delta|=1\) case of
+Lemma~\ref{lem:rigidity}; see \cite[Ch.~III]{HardyWright2008} for the classical theory.
 The rigidity lemma shows that a family realizing many directions cannot simply throw them
 together: directions related by a determinant of \(\pm1\) (``unimodular pairs'', e.g.\ any pair of
 Farey neighbors read as slopes) are permanently incompatible. The coset lemma is the tool that lets
@@ -404,9 +412,12 @@ these sub-cosets genuinely partition \(R\).
   Three points of \(R_{1,2}\), at three different values of \(k\) in
   \eqref{eq:splitting-coset-conclusion}:
   \begin{align}
-    (u,w)=(1,2) &\;\longmapsto\; (x,y)=(3,7): && \varphi_{(4,9)}(3,7)=27-28=-1=c_0+36\cdot0, \\
-    (u,w)=(3,2) &\;\longmapsto\; (x,y)=(7,7): && \varphi_{(4,9)}(7,7)=63-28=35=c_0+36\cdot1, \\
-    (u,w)=(1,5) &\;\longmapsto\; (x,y)=(3,16): && \varphi_{(4,9)}(3,16)=27-64=-37=c_0+36\cdot(-1),
+    (u,w)&=(1,2) \;\longmapsto\; (x,y)=(3,7): \notag\\
+    &\varphi_{(4,9)}(3,7)=27-28=-1=c_0+36\cdot0, \\
+    (u,w)&=(3,2) \;\longmapsto\; (x,y)=(7,7): \notag\\
+    &\varphi_{(4,9)}(7,7)=63-28=35=c_0+36\cdot1, \\
+    (u,w)&=(1,5) \;\longmapsto\; (x,y)=(3,16): \notag\\
+    &\varphi_{(4,9)}(3,16)=27-64=-37=c_0+36\cdot(-1),
   \end{align}
   using \(PQ=36\) throughout.
 \end{example}
@@ -550,7 +561,7 @@ toward an \emph{arbitrary prescribed} target at every stage.
 We now have all pieces needed to prove Theorem~\ref{thm:main}.
 
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
-  Fix an enumeration \((z_k)_{k\ge1}\) of \(\Z^2\) and a sequence \((\theta_k)_{k\ge1}\) dense in
+  Fix an enumeration of \(\Z^2\), \((z_k)_{k\ge1}\), and a sequence \((\theta_k)_{k\ge1}\) dense in
   \([0,\pi)\) (e.g.\ \(\theta_k=k\alpha\bmod\pi\) for \(\alpha/\pi\) irrational, by equidistribution of
   the irrational rotation). Set \(R_0=\Z^2\), i.e.\ \((n_1,n_2,x_0,y_0)=(1,1,0,0)\).
 
@@ -616,14 +627,17 @@ We now have all pieces needed to prove Theorem~\ref{thm:main}.
   R_k\), since \(R_{u_0,w_0}\ne R_k\)): this is exactly~\eqref{eq:splitting-coset-conclusion} of
   Lemma~\ref{lem:splitting-coset} (each line on the left is a subset of the union), the step the
   earlier, flawed version of this construction got wrong (see the remark following
-  Lemma~\ref{lem:splitting-coset}). So stage \(k\)'s claimed points lie in \(R_{k-1}\setminus
-  R_k\subset R_{k-1}\). For \(j>k\), \(R_{j-1}\subseteq R_k\) (as \(R_i\subseteq R_{i-1}\) for every \(i\)),
+  Lemma~\ref{lem:splitting-coset}). So stage \(k\)'s claimed points lie in
+  \[R_{k-1}\setminus  R_k\subset R_{k-1}.\]
+  For \(j>k\), \(R_{j-1}\subseteq R_k\) (as \(R_i\subseteq R_{i-1}\) for every \(i\)),
   so stage \(j\)'s points, lying in \(R_{j-1}\), are disjoint from stage \(k\)'s. Hence distinct lines
   from different stages never share a lattice point, and distinct lines of the same direction from
   the same stage are disjoint level sets of the same \(\varphi_{(P_k,Q_k)}\), so never share one
-  either. (Different stages in fact always realize different directions: \(|P_k|=n_1^{(k)}\) is
-  strictly increasing in \(k\), since \(n_1^{(k)}=n_1^{(k-1)}|s_k|\ge2n_1^{(k-1)}\); though the
-  argument above does not need this.)
+  either.
+  (Different stages in fact always realize different directions: \(|P_k|=n_1^{(k)}\) is
+  strictly increasing in \(k\), since
+  \[n_1^{(k)}=n_1^{(k-1)}|s_k|\ge2n_1^{(k-1)};\]
+  though the  argument above does not need this.)
 
   \emph{Density.} Fix \(\theta\in\RP\) and \(\varepsilon>0\). By Remark~\ref{rem:tail-density}, every
   tail \(\{\theta_k\}_{k\ge N}\) is dense in \(\RP\); so for any \(N\) there is some \(k\ge N\) with
@@ -675,7 +689,7 @@ on the unit circle (a line's direction is unsigned) and colored by its position 
 \section{Related work}
 
 The reformulation via \(\varphi_d\) and the resulting rigidity phenomenon (Lemma~\ref{lem:rigidity})
-is the natural two-dimensional analogue of the classical theory of \emph{covering systems of
+form the natural two-dimensional analogue of the classical theory of \emph{covering systems of
 congruences}, introduced by Erd\H{o}s~\cite{Erdos1950} to show that a positive proportion of the
 integers are not of the form \(2^k+p\) for \(p\) prime. A very close relative of our covering problem
 --- covering \(\Z^2\) by finitely many finite-index \emph{sublattices} (necessarily containing the
@@ -692,7 +706,7 @@ infinite, unbounded point set, with a crossing-avoidance constraint standing in 
 number of lines, and correspondingly the answer is qualitatively different: densely many
 directions are both necessary to consider and available.
 
-The forbidden unimodular pairs of Lemma~\ref{lem:rigidity} are exactly the Farey-neighbor pairs of
+The unimodular pairs forbidden by Lemma~\ref{lem:rigidity} are exactly the Farey-neighbor pairs of
 slopes; see e.g.\ Hardy and Wright \cite[Ch.~III]{HardyWright2008} for the classical theory of
 Farey sequences and the closely related Stern--Brocot tree. This is precisely the toolkit used in
 the digital-geometry literature on digitized straight lines, where continued-fraction and
@@ -708,16 +722,29 @@ Uscka-Wehlou's dissertation~\cite{UsckaWehlou2009}.
 
 \section*{Acknowledgements}
 
-This problem occurred to the author during an idle conversation with colleagues (in the department
-coffee room) about covering the lattice \(\Z^2\) with lines. It was considered as a useful test for
-LLM-assisted proof discovery and proof formalization, and indeed the results in this note --- the
-reformulation, the rigidity and coset lemmas, the recursive construction, and both rounds of
-error-correction (one caught by numerical simulation, one by an independent review) --- were found
-by Claude (Anthropic), working with the author in an interactive session. The additional
-references collected in the extended-references version of this note were located and verified by
-Claude via web search.\footnote{See~\cite{gitrepo} for a list of ``certificates'' showing how each
-reference is used in this manuscript.} This manuscript was likewise produced by the author and
-Claude jointly.
+This problem occurred to the author during an idle conversation with colleagues
+(in the department coffee room) about covering the lattice \(\Z^2\) with lines.
+It was considered as a useful test for LLM-assisted proof discovery and proof
+formalization, since the author conjectured that the proof of the result,
+if it was indeed true, should only use elementary methods, which are already in
+lean (Mathlib).
+
+The results in this note: the reformulation, the
+rigidity and coset lemmas, the recursive construction, and both rounds of
+error-correction (one caught by numerical simulation, one by an independent
+review), were found by Claude (Anthropic), working with the author in an
+interactive session. The additional references collected in the
+extended-references version of this note were located and verified by Claude via
+web search. A list of ``certificates'' showing how each reference is used in this manuscript (this
+``certificate of non-hallucination''), together with a more detailed explanation of the whole
+process of producing this manuscript, from inception to exploration to proof discovery to proof
+formalization and verification, are described in the gitlab repository \cite{gitrepo}.
+
+This manuscript was likewise produced by the author and Claude jointly, with the author mainly
+directing Claude toward clearer exposition for human readers: restructuring the proofs into short,
+explicitly labeled lemmas, and breaking up long equations for readability. The author then checked
+the final manuscript to the best of his ability, made final edits, and assumes full responsibility
+for any errors, mistakes, or gaps that remain.
 
 \begin{thebibliography}{9}
 
