@@ -20,9 +20,35 @@ theorem statement and a non-expert guide to checking this yourself.
 directions spread out steadily around the circle of directions, steered toward golden-angle
 equidistribution.](verification-code/density_directions.png)
 
+## Published version
+
+The write-up is published, open access, as a technical report in Linköping University's
+mathematics report series:
+
+> Jan Snellman, *On the directions occurring in lattice-line coverings of the integer plane*.
+> LiTH-MAT-R, ISSN 0348-2960, No. 2026:02. Linköping University Electronic Press, 2026, 13 pp.
+> DOI: [10.3384/LiTH-MAT-R-2026-02](https://doi.org/10.3384/LiTH-MAT-R-2026-02)
+
+Full text (CC BY) via the DiVA record:
+[urn:nbn:se:liu:diva-226766](https://urn.kb.se/resolve?urn=urn:nbn:se:liu:diva-226766)
+(DiVA id `diva2:2093039`).
+
+This repository — the Lean formalization, verification scripts, and reference certificate — is
+archived as the report's supplementary software deposit on Zenodo, in the Linköping University
+community:
+
+- **This snapshot** (tag
+  [`lith-mat-r-2026-02`](https://gitlab.liu.se/jansn19/lattice-line-covers/-/tags/lith-mat-r-2026-02)):
+  [10.5281/zenodo.21916622](https://doi.org/10.5281/zenodo.21916622)
+- **All versions** — cite this one for the evolving project, rather than any single snapshot:
+  [10.5281/zenodo.21916621](https://doi.org/10.5281/zenodo.21916621)
+
+The report is licensed CC BY; the code in this repository is MIT (see [`LICENSE`](LICENSE)).
+
 ## Repository layout
 
-- **`article/`** — the publication-track write-up (LaTeX, for arXiv/HAL/LiTH-MAT-R). The
+- **`article/`** — the publication-track write-up (LaTeX, for arXiv/HAL/LiTH-MAT-R), published as
+  LiTH-MAT-R 2026:02 — see [Published version](#published-version) above. The
   submission-track `.tex` file is a polished, mechanically-derived descendant of a Typst working
   draft, `lattice_line_covers_pedantic.typ`, kept here unmodified in the form it was actually
   developed in (annotations, changelog comments, and all) — see [`lean/STRATEGY.md`](lean/STRATEGY.md)
