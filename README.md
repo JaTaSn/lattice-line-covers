@@ -74,6 +74,14 @@ The problem originated from a recreational observation about a chessboard's grid
 mathematicians, then developed into the theorem above with the help of an AI coding assistant
 (Claude, Anthropic) — see the article's Introduction and Acknowledgements for the full story.
 
+![Two lattice lines over an 8×8 chessboard set in the integer grid. The blue line runs through
+(1,1) in direction (3,2), the red through (3,7) in direction (2,−3); filled dots mark the lattice
+points each passes through. They do cross — at the black diamond — but at (67/13, 49/13), which is
+not a lattice point, exactly as the covering condition requires. The dashed lines through the
+origin carry the same two directions, and the filled squares where they meet the dotted circle are
+those directions as antipodal pairs of points of the direction space
+RP¹.](article/figures/chessboard-figure.png)
+
 ## License
 
 MIT — see [`LICENSE`](LICENSE).
