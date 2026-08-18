@@ -1,4 +1,15 @@
 % Changelog (reverse chronological):
+% 2026-08-18 13:04 - Claude: v5. The crossing sat only 0.277 lattice units from (5,4) --
+%   which is itself a *marked* lattice point on line B -- so the black diamond
+%   and that red dot overlapped at any sane rendering size, and the figure read
+%   as though the two lines cross AT a lattice point: exactly what the covering
+%   condition forbids. Moved line B from (3,7) to (3,3) (same direction (2,-3)),
+%   putting the crossing at (43/13,33/13), 0.555 from the nearest lattice point.
+%   Note 0.601 is the hard ceiling for ANY point on a line of direction (3,2) or
+%   (2,-3) -- a lattice line keeps returning close to the lattice -- so this is
+%   ~92% of what these directions allow; beating it needs a different direction,
+%   e.g. (3,1) or (1,1), whose ceiling is 0.707. Marked points on B are now
+%   (-1,9),(1,6),(3,3),(5,0); none lies on the radius-10 circle (the v4 trap).
 % 2026-08-03 08:15 - Claude: v4. Line B's marked lattice point (0,10) turned out
 %   to sit exactly on the radius-10 circle (one of the twelve lattice points on
 %   x^2+y^2=100: the four axis points and the eight from 6^2+8^2=10^2) -- a
@@ -53,7 +64,7 @@
   % (offset (2,7)->(3,7) vs. earlier versions: (2,7) put the lattice point (0,10)
   % exactly on the radius-10 circle, an avoidable coincidence -- see changelog.)
   \draw[lineBcolor, line width=0.85pt]
-    ({3-2*1.3},{7+3*1.3}) -- ({3+2*3.6},{7-3*3.6});
+    ({3-2*2.7},{3+3*2.7}) -- ({3+2*3.2},{3-3*3.2});
 
   % --- Auxiliary: the SAME two directions, as lines through the origin ---
   % (dashed, same colors) -- these, not the offset lines above, are what
@@ -79,10 +90,10 @@
 
   % --- Lattice points each (offset) line passes through: filled circles ---
   \foreach \p in {(-2,-1),(1,1),(4,3),(7,5)} \fill[lineAcolor] \p circle (2.8pt);
-  \foreach \p in {(1,10),(3,7),(5,4),(7,1)} \fill[lineBcolor] \p circle (2.8pt);
+  \foreach \p in {(-1,9),(1,6),(3,3),(5,0)} \fill[lineBcolor] \p circle (2.8pt);
 
   % --- The (non-lattice) crossing point of the two ACTUAL lines: black diamond ---
-  \fill[black, rotate around={45:(67/13,49/13)}] (67/13,49/13) ++(-2.6pt,-2.6pt) rectangle ++(5.2pt,5.2pt);
+  \fill[black, rotate around={45:(43/13,33/13)}] (43/13,33/13) ++(-2.6pt,-2.6pt) rectangle ++(5.2pt,5.2pt);
 
   % --- Origin label ---
   \node[below left, font=\scriptsize] at (0,0) {$0$};
