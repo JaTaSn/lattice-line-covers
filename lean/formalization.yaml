@@ -1,0 +1,95 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+
+# formalization.yaml (v0.4): repo-root metadata for formalization projects.
+# Written 2026-08-20 for submission to the Palomar registry (palomar-registry.org).
+
+version: "v0.4"
+
+project:
+  name: "lattice-line-covers"
+  authors: ["Jan Snellman"]
+  license: "MIT"
+
+sources:
+  - title: "Lattice line covers"
+    authors: ["Jan Snellman"]
+    type: "original-proof"
+    location: "Theorem 1"
+    relationship: "formalizes"
+    license: "MIT"
+    author_endorsement: "participated"
+
+related_formalizations: []
+
+classification:
+  arxiv: ["math.CO", "math.NT"]
+  # msc2020 deliberately left blank -- worth Jan's own confirmation rather than a guessed code.
+  msc2020: []
+
+status:
+  scope: >
+    A family of straight lines, each through infinitely many points of Z^2, covering every
+    lattice point, with no two lines of different direction sharing a lattice point, whose
+    realized directions are dense in the space of line directions (RP^1). The full paper's other
+    remarks and discussion are not formalized -- only Theorem 1 itself.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Classical.choice", "Quot.sound"]
+  main_results:
+    - declaration: "Palomar.main_theorem"
+      file: "Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+
+  automation:
+    methods:
+      - method: "agent"
+        models: []  # specific model version(s) not recorded during development; left blank
+                     # rather than guessed -- Jan may want to fill this in from his own records.
+        framework: "Claude Code"
+        tool_setup: >
+          Interactive session between the author and Claude (Anthropic), plan/delegate/verify
+          methodology -- see STRATEGY.md in this directory for the working process, and
+          ../HISTORY.md for the narrated development history including mistakes found and fixed
+          along the way (one caught by numerical simulation, one by independent review).
+        prompting_notes: ""
+    spend_usd: ""
+    notes: >
+      The mathematics was developed in a Typst working draft (../article/lattice_line_covers_pedantic.typ,
+      kept in this repository unmodified) that doubled as the formalization's own guide, with
+      inline "formalization status" annotations tracking progress lemma by lemma. See STRATEGY.md.
+
+fidelity:
+  divergences: ""
+
+review:
+  status: "author-verified"
+  reviewers: ["Jan Snellman"]
+  notes: >
+    Independently verifiable by anyone: see ../lean/PROOF.md for exact steps (lake build, grep
+    for sorry, #print axioms on the main theorem). No sorry, no custom axioms -- checked
+    mechanically, not just asserted.
+
+alignment:
+  namespace: "Palomar"
+  statements:
+    - source: "Theorem 1 (article/lattice_line_covers.tex)"
+      lean: "Palomar.main_theorem"
+      module: "Solution.lean"
+      status: "proved"
+      note: >
+        The statement in Challenge.lean/Solution.lean is a verbatim copy of
+        LatticeLineCoversLean.Family.main_theorem's type, restated in the Palomar namespace to
+        avoid a declaration clash between the challenge module's own copies of lline/direction/
+        rpDist and the main project's. Solution.lean proves the copies are definitionally equal
+        (rfl) to the main project's and discharges the goal via LatticeLineCovers.main_theorem.
+
+acknowledgements: >
+  This problem occurred to the author during an idle conversation with colleagues about covering
+  the lattice Z^2 with lines. The reformulation, the rigidity and coset lemmas, the recursive
+  construction, and both rounds of error-correction (one caught by numerical simulation, one by
+  independent review) were found by Claude (Anthropic), working with the author in an interactive
+  session. The author directed the exposition, checked the final manuscript, and assumes full
+  responsibility for any errors or gaps that remain.
