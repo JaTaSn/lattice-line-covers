@@ -20,6 +20,56 @@ because that is what breaks cross-references from other work.
 
 ## 2026-08-21
 
+### Order-type clarifications: why the recursion is ω, and what that costs
+
+Prompted by Jan's question of whether the construction hides an `ω²` (metasteps) rather than being
+a single `ω`-sequence, and by his Gröbner-basis instinct that "lexicographically least" invites the
+`lex` vs `deglex` order-type distinction (Robbiano's classification: term orders on `ℕⁿ` have order
+types exactly `ω¹,…,ωⁿ`). **No mathematical content changed** — all three additions make explicit
+what the proof already did implicitly.
+
+**Coverage restated as `⋂ₖ Rₖ = ∅`** (proof of Theorem 7). Since the stage-`k` claims are exactly
+`R_{k−1} ∖ R_k` and `R₀ = ℤ²`, coverage *is* the emptiness of the intersection: every point leaves
+the chain at a finite stage, which is what makes the recursion self-contained at order type `ω`
+with no step past `k ∈ ℕ`. Added with a non-example showing this is not automatic — "always reserve
+the sub-coset containing the origin" gives a strictly decreasing chain with the same densities
+`1/(n₁n₂) → 0` that nevertheless keeps `(0,0)` in every `Rₖ`. So it is the reservation rule's
+dependence on the enumeration that forces the intersection empty, and only because every point of
+`ℤ²` carries a finite index.
+
+**Remark 16 extended** with the order-type reason why exactly one of the two selection rules is
+computable. The reservation minimises over the *finite* box `[0,|s|) × [0,|t|)`, so "lexicographically
+least" commits to nothing — every total order on a finite set has finite order type, and a graded
+order would reserve a different sub-coset with no effect on the proof. The steering pair is drawn
+from an *infinite* subset of `ℤ²`, and there the order matters: lex on `ℤ²` has order type `ω²`, so a
+least element exists (the selection is well defined) but finding it can require deciding whether an
+entire infinite column meets the set — not a terminating search. A **graded** order (`|s|+|t|`, lex
+tie-break) has order type `ω`, every pair has finitely many predecessors, and the least admissible
+pair is the first candidate passing the coprimality tests and Lemma 15's strict inequality.
+
+The consequence is worth having on record: **classical choice in the steering rule is a convenience,
+not a necessity.** Taking the graded-least admissible pair makes it computable, and the whole
+recursion with it — which is a concrete route to removing `Classical.choose` from `sOf`/`tOf` in the
+Lean formalization, should that ever be wanted. New bibliography entry `Robbiano1985`.
+
+**New Remark 17 (Sequence order against angular order)**, after Figure 7. The dots there are indexed
+by the stage that produced them, not by position on `ℝP¹`, and the two orders are *necessarily*
+different: an enumeration of a dense subset of `[0,π)` cannot be monotone, since if
+`θ₁ < θ₂ < ⋯` then no term lies in `(θ₁, θ₂)` and the term set misses an open set. Density forces the
+enumeration to jump; the equidistributed target makes it jump evenly. The scatter in the figure is
+order type `ω` lying transverse to the geometry of `ℝP¹`, not an artifact of the run.
+
+### Two errors found while checking Figure 7 against its generator
+
+Both in the paragraph introducing Figure 7; neither affects any statement or proof.
+
+- **The target sequence was stated wrong.** Text had `θₖ = kπ(√5−1) mod π`; `verification-code/density_sequence.py`
+  computes `θₖ = kπ(√5−1)/2 mod π` (`phi = (sqrt(5)-1)/2`). A factor of two — both are irrational
+  rotations and hence equidistributed, so the figure is unaffected, but a reader recomputing it would
+  have got a different sequence. The script's **own docstring carried the same error** and was the
+  source of it; fixed in both.
+- **Wrong directory.** "code in `code/`" — the directory is `verification-code/`. There is no `code/`.
+
 ### New Figure 6: the nested chain, and a Remark on the two selection rules
 
 **No mathematical content changed**; the proof's argument is untouched. Three related edits:

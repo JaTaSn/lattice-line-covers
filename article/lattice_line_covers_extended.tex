@@ -42,6 +42,7 @@
 \newtheorem{corollary}[definition]{Corollary}
 
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\RP}{\mathbb{RP}^1}
 
@@ -784,6 +785,18 @@ We now have all pieces needed to prove Theorem~\ref{thm:main}.
     \label{eq:main-coverage}
     \bigcup_k(\text{stage-}k\text{ claims}) \;=\; \Z^2.
   \end{equation}
+  Since the stage-\(k\) claims are exactly \(R_{k-1}\setminus R_k\), and \(R_0=\Z^2\), this says
+  precisely that
+  \[\bigcap_{k\ge0} R_k=\varnothing,\]
+  that is: every point leaves the chain at some \emph{finite} stage. This is what makes the
+  recursion self-contained at order type \(\omega\), with no step beyond those indexed by
+  \(k\in\N\).
+
+  Nesting alone would not give it. The rule ``always reserve the sub-coset containing the origin''
+  produces a chain that is strictly decreasing, with the same densities
+  \(1/(n_1^{(k)}n_2^{(k)})\to0\), and yet retains \((0,0)\) in every \(R_k\) --- a point that no line
+  of \(\mathcal F\) would ever cover. What excludes this is the reservation rule's dependence on the
+  enumeration \((z_k)\), and that works only because every point of \(\Z^2\) carries a finite index.
 
   \emph{Disjointness.} Every individual line placed into \(\mathcal F\) at stage \(k\) has all of its
   lattice points inside the sub-coset \(R_{u_0,w_0}\) it came from (a subset of \(R_{k-1}\setminus
@@ -832,6 +845,29 @@ We now have all pieces needed to prove Theorem~\ref{thm:main}.
   the existence statement by classical choice: Lemma~\ref{lem:steering} singles out no canonical
   \((s,t)\), and the proof needs none.
 
+  Why only one of the two is computable is a question of order type rather than of principle. The
+  reservation is a minimum over the \emph{finite} set \([0,|s|)\times[0,|t|)\), so
+  ``lexicographically least'' commits us to nothing: every total order on a finite set has finite
+  order type, and a graded order would serve equally well --- it would generally reserve a different
+  sub-coset, but the proof never uses which one. The steering pair, by contrast, is drawn from an
+  \emph{infinite} subset of \(\Z^2\), and there the choice of order does matter. Ordered
+  lexicographically, \(\Z^2\) has order type \(\omega^2\); a nonempty subset still has a least
+  element, so the selection is well defined --- but locating it may require deciding whether an
+  entire infinite column meets the set, which no terminating search can do. Under a \emph{graded}
+  order --- by \(|s|+|t|\), say, with lexicographic tie-breaking --- the order type is \(\omega\),
+  every pair has only finitely many predecessors, and the least admissible pair is found by running
+  through candidates in that order until one passes the coprimality tests and the strict inequality
+  of Lemma~\ref{lem:steering}. That search halts precisely because the order type is \(\omega\).
+
+  So classical choice here is a convenience, not a necessity: taking the graded-least admissible
+  pair makes the steering rule computable too, and with it the recursion as a whole. We keep the
+  existential form because that is what the argument uses, and no canonical pair is needed for the
+  theorem. (For term orders on \(\N^n\), which are required in addition to respect addition --- a
+  constraint of no use here --- the possible order types are exactly \(\omega^1,\dots,\omega^n\); see
+  Robbiano's classification~\cite{Robbiano1985}. The moral survives in the present looser setting:
+  what a terminating search needs is not compatibility with the group structure, but order type
+  \(\omega\).)
+
   So the construction is a definite object once an enumeration \((z_k)\), a dense sequence
   \((\theta_k)\) and a selection of steering pairs are fixed; only the last of these is genuinely
   arbitrary. Figure~\ref{fig:nesting} shows one such run.
@@ -842,8 +878,9 @@ We now have all pieces needed to prove Theorem~\ref{thm:main}.
 Figure~\ref{fig:nesting} above shows the nested regions \(R_k\) that drive the recursion;
 this section instead looks at what the construction \emph{achieves}.
 Figure~\ref{fig:directions} plots the first \(10\), \(20\), and \(100\) directions realized by an actual
-run of the construction (code in \texttt{code/}, targeting the golden-angle equidistributed
-sequence \(\theta_k = k\pi(\sqrt5-1)\bmod\pi\)), each direction shown as an antipodal pair of points
+run of the construction (code in \texttt{verification-code/}, targeting the equidistributed sequence
+\(\theta_k = k\pi(\sqrt5-1)/2 \bmod \pi\), an irrational rotation by the golden ratio conjugate),
+each direction shown as an antipodal pair of points
 on the unit circle (a line's direction is unsigned) and colored by its position in the sequence.
 
 \begin{figure}[h]
@@ -855,6 +892,20 @@ on the unit circle (a line's direction is unsigned) and colored by its position 
   angle is chosen from an equidistributed sequence rather than visited in angular order.}
   \label{fig:directions}
 \end{figure}
+
+\begin{remark}[Sequence order against angular order]
+  \label{rem:order-transverse}
+  The points in Figure~\ref{fig:directions} are indexed by the stage \(k\) that produced them ---
+  that index is what the color ramp shows --- and not by where they sit on \(\RP\). The two orders
+  are necessarily different, and not merely incidentally so: an enumeration of a dense subset of
+  \([0,\pi)\) cannot be monotone. If \(\theta_1<\theta_2<\cdots\), then no term at all lies in the
+  nonempty open interval \((\theta_1,\theta_2)\), since every later term is at least \(\theta_2\);
+  the set of terms therefore misses an open set and is not dense. A decreasing enumeration fails for
+  the same reason. Density thus forces the enumeration to jump about, and an equidistributed target
+  sequence makes it jump about as evenly as it can. The scatter in the figure is the construction's
+  order type \(\omega\) lying transverse to the geometry of \(\RP\), not an artifact of the
+  particular run.
+\end{remark}
 
 \begin{remark}
   Both the splitting mechanism (Lemmas~\ref{lem:splitting-coset}--\ref{lem:splitting-partition})
@@ -961,6 +1012,10 @@ Optimization}, World Scientific, Singapore, 2022.
 \bibitem{UsckaWehlou2009}
 H. Uscka-Wehlou, \emph{Digital Lines, Sturmian Words, and Continued Fractions}, Ph.D. thesis,
 Uppsala Dissertations in Mathematics \textbf{65}, Uppsala University, 2009.
+
+\bibitem{Robbiano1985}
+L. Robbiano, \emph{Term orderings on the polynomial ring}, in: Proceedings of EUROCAL '85, Vol.~2
+(Linz, 1985), Lecture Notes in Computer Science \textbf{204}, Springer, Berlin, 1985, pp.~513--517.
 
 \bibitem{gitrepo}
 J. Snellman and Claude (Anthropic), \emph{lattice-line-covers} (source repository, including the
