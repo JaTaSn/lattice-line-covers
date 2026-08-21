@@ -25,6 +25,7 @@
 \usepackage{hyperref}
 \usepackage{orcidlink}
 \usepackage{graphicx}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{doi:#1}}
 \emergencystretch=3em
 \usepackage{tikz}
 
@@ -63,6 +64,13 @@
   stage of the recursion a new direction arbitrarily close to any prescribed target can still be
   realized, via an elementary sieve bound.
 \end{abstract}
+
+\begin{center}
+\footnotesize
+\emph{Note.} An earlier version of this work appeared as the technical report
+\cite{report2026}. The present manuscript extends it; see \texttt{changes-wrt-report.md} in the
+source repository \cite{gitrepo} for a running account of what has been added or altered since.
+\end{center}
 
 \section{Introduction}
 
@@ -295,6 +303,38 @@ Our main result:
   has \emph{some} value of \(u-v\).
 \end{proof}
 
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[scale=0.66]
+    % Lemma \ref{lem:coset} with p=3, q=2, (x_0,y_0)=(1,1): c_0 = q x_0 - p y_0 = -1,
+    % so r_k = -1 + 6k, and the coset is C = {x = 1 mod 3, y = 1 mod 2}.
+    % The clip is scoped so the level labels, drawn afterwards, are not truncated.
+    \begin{scope}
+      \clip (-3.2,-2.9) rectangle (8.2,6.4);
+      \foreach \x in {-3,...,8} \foreach \y in {-3,...,7}
+        \fill[gray!40] (\x,\y) circle (1.5pt);
+      \draw[gray!55] (-3.2,0) -- (8.2,0);
+      \draw[gray!55] (0,-2.9) -- (0,6.4);
+      \foreach \r in {-19,-13,-7,-1,5,11,17}
+        \draw[blue!65!black, line width=0.7pt] (-8,{(2*(-8)-\r)/3}) -- (14,{(2*14-\r)/3});
+      \foreach \x in {-2,1,4,7} \foreach \y in {-1,1,3,5}
+        \fill[blue!65!black] (\x,\y) circle (2.9pt);
+      \draw[->, red!70!black, line width=1pt] (1,1) -- (4,3);
+    \end{scope}
+    \node[red!70!black, font=\scriptsize, below right] at (2.3,1.75) {$(p,q)=(3,2)$};
+    \node[blue!65!black, font=\scriptsize, right] at (8.3,6.0) {$r_0=-1$};
+    \node[blue!65!black, font=\scriptsize, right] at (8.3,4.0) {$r_1=5$};
+    \node[blue!65!black, font=\scriptsize, right] at (8.3,2.0) {$r_2=11$};
+  \end{tikzpicture}
+  \caption{Lemma~\ref{lem:coset} for \(d=(p,q)=(3,2)\) and \((x_0,y_0)=(1,1)\), so that
+    \(c_0=qx_0-py_0=-1\) and \(r_k=-1+6k\). Small grey dots are \(\Z^2\); large dots are the coset
+    \(C=\{(x,y): x\equiv 1 \bmod 3,\ y\equiv 1 \bmod 2\}\), a translate of the sublattice
+    \(3\Z\times2\Z\). Each line \(\ell_{(3,2),r_k}\) meets \(\Z^2\) \emph{only} in \(C\), and
+    consecutive points along a line differ by \((p,q)=(3,2)\); as \(k\) ranges over \(\Z\) the
+    lines partition \(C\). The levels are equally spaced with gap \(pq=6\): a smaller gap would
+    give lines missing \(\Z^2\) altogether, a larger one would leave points of \(C\) uncovered.}
+  \label{fig:coset}
+\end{figure}
 
 Recall that by \emph{Farey neighbors} is meant two primitive directions
 \[d_1=(p_1,q_1), \quad d_2=(p_2,q_2)\]
@@ -738,7 +778,9 @@ extended-references version of this note were located and verified by Claude via
 web search. A list of ``certificates'' showing how each reference is used in this manuscript (this
 ``certificate of non-hallucination''), together with a more detailed explanation of the whole
 process of producing this manuscript, from inception to exploration to proof discovery to proof
-formalization and verification, are described in the gitlab repository \cite{gitrepo}.
+formalization and verification, are described in the gitlab repository \cite{gitrepo}; the
+formalization and verification code is also archived, with a citable DOI, on Zenodo
+\cite{zenodo}.
 
 This manuscript was likewise produced by the author and Claude jointly, with the author mainly
 directing Claude toward clearer exposition for human readers: restructuring the proofs into short,
@@ -776,6 +818,16 @@ Uppsala Dissertations in Mathematics \textbf{65}, Uppsala University, 2009.
 J. Snellman and Claude (Anthropic), \emph{lattice-line-covers} (source repository, including the
 Lean/Mathlib formalization and reference certificates), 2026,
 \url{https://gitlab.liu.se/jansn19/lattice-line-covers}.
+
+\bibitem{report2026}
+J. Snellman, \emph{On the directions occurring in lattice-line coverings of the integer plane},
+LiTH-MAT-R, ISSN 0348-2960, No. 2026:02, Link\"oping University Electronic Press, 2026.
+\doi{10.3384/LiTH-MAT-R-2026-02}. Open access via DiVA, \texttt{urn:nbn:se:liu:diva-226766}.
+
+\bibitem{zenodo}
+J. Snellman, \emph{lattice-line-covers: Lean/Mathlib formalization and verification code}, Zenodo,
+Link\"oping University community, 2026. Concept DOI (all versions) \doi{10.5281/zenodo.21916621};
+this snapshot \doi{10.5281/zenodo.21916622}.
 
 \end{thebibliography}
 

@@ -5,7 +5,8 @@
 #
 # WHY THIS EXISTS
 # ---------------
-# The committed article/lattice_line_covers_preprint.pdf sat in the repository
+# The committed article/lattice_line_covers_preprint.pdf (as it was then named;
+# renamed to ..._extended.pdf on 2026-08-21) sat in the repository
 # from 2026-08-09 to 2026-08-20 with 76 unresolved references -- every \ref and
 # \eqref in the body rendering as "??" -- because it had been compiled with a
 # single pdflatex pass. LaTeX writes cross-reference targets to .aux on one pass
@@ -97,7 +98,7 @@ check-pdf-references:
         echo
         echo "Fix locally, then commit the rebuilt PDF:"
         echo "    cd article"
-        echo "    pdflatex lattice_line_covers_preprint.tex   # x3"
+        echo "    pdflatex lattice_line_covers_extended.tex   # x3"
         echo "    # stable after two; by pass three there should be no"
         echo "    # 'Rerun to get cross-references right' warning"
         echo

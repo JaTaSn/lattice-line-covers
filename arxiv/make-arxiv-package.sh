@@ -14,7 +14,7 @@
 # strictly alone (ancillary files: offered for download beside the paper, never
 # compiled, never rendered). So:
 #
-#   lattice_line_covers_preprint.tex   the manuscript -- arXiv wants LaTeX
+#   lattice_line_covers_extended.tex   the manuscript -- arXiv wants LaTeX
 #   figures/*.png                      only the two the .tex actually includes
 #   anc/lattice_line_covers_pedantic.typ
 #                                      the Typst working draft that was the real
@@ -50,11 +50,11 @@ trap 'rm -rf "$BUILD"' EXIT
 echo "==> assembling"
 mkdir -p "$BUILD/figures" "$BUILD/anc"
 
-cp article/lattice_line_covers_preprint.tex "$BUILD/"
+cp article/lattice_line_covers_extended.tex "$BUILD/"
 
 # Copy exactly the figures the .tex includes -- not the whole directory, so an
 # unused figure can never silently bloat the upload.
-grep -oE '\\includegraphics(\[[^]]*\])?\{[^}]*\}' article/lattice_line_covers_preprint.tex \
+grep -oE '\\includegraphics(\[[^]]*\])?\{[^}]*\}' article/lattice_line_covers_extended.tex \
   | sed -E 's/.*\{(.*)\}/\1/' | sort -u | while read -r fig; do
       src="article/$fig"
       [ -f "$src" ] || { echo "MISSING figure: $src" >&2; exit 1; }
@@ -72,15 +72,15 @@ cp arxiv/anc-README.md "$BUILD/anc/README.md"
 
 echo "==> test-compiling (3 passes, exactly as arXiv would need)"
 ( cd "$BUILD" && for i in 1 2 3; do
-    pdflatex -interaction=batchmode -halt-on-error lattice_line_covers_preprint.tex >/dev/null 2>&1 \
-      || { echo "PASS $i FAILED -- see $BUILD/lattice_line_covers_preprint.log" >&2; trap - EXIT; exit 1; }
+    pdflatex -interaction=batchmode -halt-on-error lattice_line_covers_extended.tex >/dev/null 2>&1 \
+      || { echo "PASS $i FAILED -- see $BUILD/lattice_line_covers_extended.log" >&2; trap - EXIT; exit 1; }
   done )
 
-if grep -q "Rerun to get cross-references right" "$BUILD/lattice_line_covers_preprint.log"; then
+if grep -q "Rerun to get cross-references right" "$BUILD/lattice_line_covers_extended.log"; then
   echo "WARNING: LaTeX still wants another pass after three" >&2
 fi
 
-n=$(pdftotext "$BUILD/lattice_line_covers_preprint.pdf" - 2>/dev/null | grep -c '??' || true)
+n=$(pdftotext "$BUILD/lattice_line_covers_extended.pdf" - 2>/dev/null | grep -c '??' || true)
 if [ "$n" -gt 0 ]; then
   echo "FAILED: compiled PDF has $n unresolved cross-reference(s)" >&2
   exit 1

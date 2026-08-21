@@ -127,7 +127,7 @@ used here, one rank up."
 Proceedings of the Sundance Conference on Combinatorics and Related Topics (Sundance, Utah, 1985),
 Congressus Numerantium **50**, 129–135.
 
-**Claim supported:** the current preprint (`article/lattice_line_covers_preprint.tex`, line 688)
+**Claim supported:** the current preprint (`article/lattice_line_covers_extended.tex`, line 688)
 says "Corzatt `\cite{Corzatt1985}` **conjectured** that if a *finite, convex* set of lattice points
 is covered by $n$ lines (with no constraint on where the lines may cross), the lines can always be
 chosen to use at most four distinct slopes." (An earlier, now-obsolete draft,
