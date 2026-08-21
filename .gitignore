@@ -1,0 +1,3 @@
+
+# arXiv submission tarballs -- derived, rebuild with arxiv/make-arxiv-package.sh
+arxiv/*.tar.gz
