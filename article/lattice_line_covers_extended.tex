@@ -863,9 +863,15 @@ We now have all pieces needed to prove Theorem~\ref{thm:main}.
   pair makes the steering rule computable too, and with it the recursion as a whole. We keep the
   existential form because that is what the argument uses, and no canonical pair is needed for the
   theorem. (For term orders on \(\N^n\), which are required in addition to respect addition --- a
-  constraint of no use here --- the possible order types are exactly \(\omega^1,\dots,\omega^n\); see
-  Robbiano's classification~\cite{Robbiano1985}. The moral survives in the present looser setting:
-  what a terminating search needs is not compatibility with the group structure, but order type
+  constraint of no use here --- the possible order types are exactly \(\omega^1,\dots,\omega^n\).
+  This is a consequence of the classification of such orders: by Robbiano's
+  theorem~\cite{Robbiano1985} every one of them is given by a real matrix acting on exponent vectors
+  and compared lexicographically, and Robbiano settles as well \emph{when two matrices determine the
+  same order}, so the representation is genuinely understood rather than merely available. Eisenbud
+  puts the classification in the equivalent form that every monomial order is a lexicographic
+  product of at most \(n\) weight orders~\cite[Exercise~15.13]{Eisenbud1995}; the number of factors
+  is then the exponent of the order type. The moral survives in the present looser setting: what a
+  terminating search needs is not compatibility with the group structure, but order type
   \(\omega\).)
 
   So the construction is a definite object once an enumeration \((z_k)\), a dense sequence
@@ -1012,6 +1018,10 @@ Optimization}, World Scientific, Singapore, 2022.
 \bibitem{UsckaWehlou2009}
 H. Uscka-Wehlou, \emph{Digital Lines, Sturmian Words, and Continued Fractions}, Ph.D. thesis,
 Uppsala Dissertations in Mathematics \textbf{65}, Uppsala University, 2009.
+
+\bibitem{Eisenbud1995}
+D. Eisenbud, \emph{Commutative Algebra with a View Toward Algebraic Geometry}, Graduate Texts in
+Mathematics \textbf{150}, Springer-Verlag, New York, 1995.
 
 \bibitem{Robbiano1985}
 L. Robbiano, \emph{Term orderings on the polynomial ring}, in: Proceedings of EUROCAL '85, Vol.~2
