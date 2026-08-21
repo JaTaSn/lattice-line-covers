@@ -1,0 +1,108 @@
+# .gitlab-ci.yml -- changelog
+#
+# 2026-08-21: created. A single CHECK job. It reads the committed PDFs and fails
+# the pipeline if any contains unresolved LaTeX cross-references ("??").
+#
+# WHY THIS EXISTS
+# ---------------
+# The committed article/lattice_line_covers_preprint.pdf sat in the repository
+# from 2026-08-09 to 2026-08-20 with 76 unresolved references -- every \ref and
+# \eqref in the body rendering as "??" -- because it had been compiled with a
+# single pdflatex pass. LaTeX writes cross-reference targets to .aux on one pass
+# and resolves them on the next, so one pass always leaves "??".
+#
+# It went unnoticed for eleven days, and was found only because Jan happened to
+# look at the PDF. The bibliography was unaffected (thebibliography populates in
+# a single pass), which is exactly what made it easy to miss: the document looked
+# plausible unless you read the body text.
+#
+# For a paper heading to a journal, "the PDF was under-compiled" is an error a
+# machine should catch, not a referee.
+#
+# WHY A CHECK AND NOT A BUILD -- READ THIS BEFORE ADDING A COMPILE STEP
+# ---------------------------------------------------------------------
+# This job deliberately does NOT compile the PDF, and must not be extended to.
+#
+# ai-workspace had two CI jobs that generated files and committed them back to
+# the branch (.org -> .md, .xopp -> .pdf). Both were disabled on 2026-08-19 after
+# real damage: committing from CI made it a second writer to main alongside Jan's
+# own machines, which forked history and left the NAS-to-GitLab relay failing
+# silently for 15 hours, stranding work. Separately, a scratch-filename bug in
+# one of those jobs rewrote all 51 generated .md files as HTML while the job
+# still reported success.
+#
+# The lesson drawn there, and applied here: CI that CHECKS is safe and useful;
+# CI that GENERATES AND COMMITS is what bites. This job writes nothing, stages
+# nothing, commits nothing, pushes nothing. It therefore needs NO access token --
+# unlike those jobs, which required CI_PUSH_TOKEN with write_repository. The
+# absence of a credential is a feature, not an omission: there is nothing to
+# leak, and nothing that could write even by mistake.
+#
+# If the PDF is ever wrong, recompile it locally (three pdflatex passes; stable
+# after two) and commit the result. Do not make CI do it.
+#
+# FALSE POSITIVES
+# ---------------
+# The check fails on any "??" in the extracted text, which would also fire on a
+# document that legitimately contains that string. Vanishingly unlikely in a
+# mathematics paper, but if it ever happens the failure output prints the
+# surrounding characters so it can be judged at a glance, and the job can be
+# skipped for one pipeline by pushing with:
+#
+#     git push -o ci.variable="SKIP_PDF_CHECK=1"
+#
+# A guard that cannot be overridden becomes an obstacle rather than a safeguard.
+
+check-pdf-references:
+  stage: test
+  # Pinned rather than :latest -- an unpinned image is a moving target, the same
+  # reasoning that led to pinning pandoc in ai-workspace on 2026-08-18.
+  image: alpine:3.20
+  rules:
+    - if: '$SKIP_PDF_CHECK == "1"'
+      when: never
+    - when: always
+  before_script:
+    - apk add --no-cache poppler-utils >/dev/null
+  script:
+    - |
+      status=0
+      found_any=0
+      for pdf in $(git ls-files '*.pdf'); do
+        [ -f "$pdf" ] || continue
+        found_any=1
+        n=$(pdftotext "$pdf" - 2>/dev/null | grep -c '??' || true)
+        if [ "$n" -gt 0 ]; then
+          echo "FAIL  $pdf -- $n unresolved cross-reference(s)"
+          echo "      context:"
+          pdftotext "$pdf" - 2>/dev/null | grep -oE '.{40}\?\?.{30}' | head -5 | sed 's/^/        /'
+          status=1
+        else
+          echo "ok    $pdf"
+        fi
+      done
+
+      if [ "$found_any" -eq 0 ]; then
+        echo "No tracked PDFs found. Nothing to check."
+      fi
+
+      if [ "$status" -ne 0 ]; then
+        echo
+        echo "-------------------------------------------------------------------"
+        echo "A committed PDF contains unresolved LaTeX cross-references."
+        echo
+        echo "Almost always this means it was compiled with a single pdflatex"
+        echo "pass. LaTeX writes reference targets to .aux on one pass and"
+        echo "resolves them on the next, so one pass always leaves '??'."
+        echo
+        echo "Fix locally, then commit the rebuilt PDF:"
+        echo "    cd article"
+        echo "    pdflatex lattice_line_covers_preprint.tex   # x3"
+        echo "    # stable after two; by pass three there should be no"
+        echo "    # 'Rerun to get cross-references right' warning"
+        echo
+        echo "Do NOT make this job compile the PDF -- see the changelog at the"
+        echo "top of this file for why CI here checks but never generates."
+        echo "-------------------------------------------------------------------"
+      fi
+      exit $status
