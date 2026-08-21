@@ -20,6 +20,49 @@ because that is what breaks cross-references from other work.
 
 ## 2026-08-21
 
+### Symbolic tags on the three most-cited equations
+
+Ranked by how often each numbered equation is actually cited, three stood out and now carry
+mnemonic tags instead of numbers:
+
+| was | now | label | cited | content |
+|---|---|---|---|---|
+| (7)  | **(R)** | `eq:rigidity-conclusion`        | 4x | the rigidity divisibility criterion |
+| (17) | **(H)** | `eq:splitting-hyps`            | 4x | `gcd(s,n₂)=gcd(t,n₁)=gcd(s,t)=1` |
+| (20) | **(S)** | `eq:splitting-coset-conclusion`| 5x | the splitting identity |
+
+`\eqref` prints the tag automatically, so no call site changed. "One checks directly that (H)
+holds" reads as mathematics; "that (17) holds" reads as bookkeeping.
+
+**`eq:steering-t0` was deliberately left numbered** despite also being cited 4x: all four citations
+sit within 20 lines of it, inside one proof, so the reader can see it on the same page. Tags earn
+their keep when a reference arrives far from its definition, and a fourth tag would dilute the
+other three.
+
+**Renumbering, and it affects comparison with the report.** A tagged equation leaves the automatic
+sequence, so everything after it shifts down by three. Notably the steering window origin `t₀` is
+**(33) here, (36) in the report**. All internal cross-references are symbolic and therefore
+unaffected, but anyone reading the two documents side by side will see different equation numbers
+from (7) onward.
+
+### Change of voice: removed references to drafts the reader cannot see
+
+The manuscript now addresses a general reader rather than the author, so passages referring to
+"an earlier version" of itself have gone. These were vestiges of its working history.
+
+| where | was | now |
+|---|---|---|
+| proof of Lemma 14 | "The +2 shift in (33), *absent from an earlier version of this proof*, is what makes…" | clause deleted — the parenthetical that follows already gives the counterfactual, so nothing is lost |
+| Remark on verification | "*an earlier version of* the splitting step, without the primitivity safeguard…, was found this way to be flawed" | "a splitting step without the primitivity safeguard … was found this way to be flawed" — now a claim about the mathematics rather than about a draft |
+| Remark on verification | "found a real gap in *an earlier version of the density argument* (restricting …)" | "found a real gap: restricting `s,t` to be positive only reaches half of `ℝP¹` …" |
+| methodology section | "the additional references collected in the *extended-references version of this note*" | "collected in the repository's extended-reference list [gitrepo]" — the old wording cited a document the reader has no way to obtain |
+
+Also **"this note" → "this manuscript"** in the two places the document refers to itself. "Note"
+read modestly for a 15-page paper with a formalization attached. Ordinary uses of the word ("note
+that…") are untouched, as is the *Note.* heading of the version notice, which points at a published
+document the reader *can* fetch.
+
+
 ### New Figures 4 and 5, for Example 12 and Lemma 13
 
 **No mathematical content changed** — statements, proofs and numbering are untouched; both figures

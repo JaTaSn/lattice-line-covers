@@ -89,7 +89,7 @@ Consider the integer lattice \(\Z^2\subset\R^2\). We wish to cover every point o
   (a second lattice point on \(L_z\) would force \(\alpha_z\in\mathbb Q\)), so distinct such lines
   never share a lattice point, and choosing the \(\alpha_z\) to range over a dense (indeed, all) set of
   irrational directions already realizes an uncountable dense set of directions. Everything of
-  interest in this note therefore concerns the restriction to \emph{lattice lines}: lines
+  interest in this manuscript therefore concerns the restriction to \emph{lattice lines}: lines
   containing at least two (hence, by the same argument, infinitely many) points of \(\Z^2\),
   equivalently lines of rational direction. This restriction is in force throughout.
 \end{remark}
@@ -223,6 +223,7 @@ Our main result:
   The lines \(\ell_{d_1,c_1}\) and \(\ell_{d_2,c_2}\) meet at a lattice point if and only if
   \begin{equation}
     \label{eq:rigidity-conclusion}
+    \tag{R}
     \Delta \mid (p_1c_2-p_2c_1) \qquad\text{and}\qquad \Delta \mid (q_1c_2-q_2c_1).
   \end{equation}
   In particular, if \(|\Delta|=1\), condition~\eqref{eq:rigidity-conclusion} holds vacuously for
@@ -373,6 +374,7 @@ these sub-cosets genuinely partition \(R\).
   Let \(R=R(n_1,n_2,x_0,y_0)\), let \(s,t\) be nonzero integers with
   \begin{equation}
     \label{eq:splitting-hyps}
+    \tag{H}
     \gcd(s,n_2)=\gcd(t,n_1)=\gcd(s,t)=1,
   \end{equation}
   and put
@@ -392,6 +394,7 @@ these sub-cosets genuinely partition \(R\).
   Then
   \begin{equation}
     \label{eq:splitting-coset-conclusion}
+    \tag{S}
     \bigcup_{k\in\Z} \ell_{(P,Q),\,c_0+PQk} \;=\; R_{u_0,w_0}, \qquad c_0 =
     Q(x_0+n_1u_0)-P(y_0+n_2w_0).
   \end{equation}
@@ -633,7 +636,7 @@ Lemma~\ref{lem:splitting-coset} avoids, via the primitivity argument built into 
     \label{eq:steering-t0}
     t_0 = \Big\lfloor \frac{\mu n_1p}{n_2} \Big\rfloor + 2.
   \end{equation}
-  The \(+2\) shift in~\eqref{eq:steering-t0}, absent from an earlier version of this proof, is what
+  The \(+2\) shift in~\eqref{eq:steering-t0} is what
   makes the forthcoming \(|t|\ge2\) requirement hold \emph{unconditionally} rather than only "for \(p\)
   large": since \(\mu\ge0\), already \(t_0\ge2\) by~\eqref{eq:steering-t0}, so every integer in the
   window \(I\) below inherits \(|t|\ge2\) directly, with no degenerate behaviour at \(\mu=0\) (where,
@@ -789,13 +792,12 @@ on the unit circle (a line's direction is unsigned) and colored by its position 
   Both the splitting mechanism (Lemmas~\ref{lem:splitting-coset}--\ref{lem:splitting-partition})
   and the sign-generality of Lemma~\ref{lem:steering} were checked by direct brute-force simulation
   (exhaustive crossing and coverage checks on finite windows up to \(81\times81\), including
-  adversarial diagonal and sign-alternating schedules) before being trusted; an earlier version of
-  the splitting step, without the primitivity safeguard built into
-  Lemma~\ref{lem:splitting-coset}, was found this way to be genuinely flawed rather than merely
+  adversarial diagonal and sign-alternating schedules) before being trusted; a splitting step
+  without the primitivity safeguard built into
+  Lemma~\ref{lem:splitting-coset} was found this way to be genuinely flawed rather than merely
   under-justified. The full argument was also read independently by a second reader (another
-  Claude agent) working from the statement of the lemmas alone, who found a real gap in an earlier
-  version of the density argument (restricting \(s,t\) to be positive only reaches half of \(\RP\),
-  and existence of \emph{some} admissible move at each stage does not imply the ability to steer
+  Claude agent) working from the statement of the lemmas alone, who found a real gap: restricting
+  \(s,t\) to be positive only reaches half of \(\RP\), and existence of \emph{some} admissible move at each stage does not imply the ability to steer
   toward an \emph{arbitrary} target --- both addressed in the versions of
   Lemmas~\ref{lem:splitting-coset}--\ref{lem:splitting-partition} and~\ref{lem:steering} given
   here). A machine-checked (Lean/Mathlib) formalization of this argument has also been completed,
@@ -847,12 +849,12 @@ formalization, since the author conjectured that the proof of the result,
 if it was indeed true, should only use elementary methods, which are already in
 lean (Mathlib).
 
-The results in this note: the reformulation, the
+The results in this manuscript: the reformulation, the
 rigidity and coset lemmas, the recursive construction, and both rounds of
 error-correction (one caught by numerical simulation, one by an independent
 review), were found by Claude (Anthropic), working with the author in an
-interactive session. The additional references collected in the
-extended-references version of this note were located and verified by Claude via
+interactive session. The additional references collected in the repository's
+extended-reference list \cite{gitrepo} were located and verified by Claude via
 web search. A list of ``certificates'' showing how each reference is used in this manuscript (this
 ``certificate of non-hallucination''), together with a more detailed explanation of the whole
 process of producing this manuscript, from inception to exploration to proof discovery to proof
