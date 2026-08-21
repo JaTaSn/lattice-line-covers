@@ -20,6 +20,32 @@ because that is what breaks cross-references from other work.
 
 ## 2026-08-21
 
+### New Figures 4 and 5, for Example 12 and Lemma 13
+
+**No mathematical content changed** — statements, proofs and numbering are untouched; both figures
+are exposition, in the style of Figure 3.
+
+**Figure 4 (Example 12)** draws the worked splitting: the coarse coset `R = R(2,3,1,1) = {x odd,
+y ≡ 1 mod 3}` as medium dots, the fine sub-coset `R_{1,2} = {x ≡ 3 mod 4, y ≡ 7 mod 9}` as large
+dots, and the lines `ℓ_{(4,9),r_k}`, `r_k = −1 + 36k`, through them. The arrow marks
+`(3,7) ↦ (7,16)`, two of the three points the example computes. The caption emphasises the point
+the algebra states but does not show: the lines meet **no** point of `R` outside `R_{1,2}` — that
+confinement is what makes the recursion safe.
+
+**Figure 5 (Lemma 13)** draws the partition itself: every point of `R` carries exactly one of the
+`|s||t| = 6` residue pairs, with **shape encoding `u₀`** and **colour encoding `w₀`**, so the
+product structure of the splitting is visible rather than merely asserted. The class `R_{1,2}` of
+Figure 4 is ringed, showing it as one of six — one handed to a new direction, five left for later
+steps.
+
+Both verified programmatically before drawing: that the six classes partition `R` exactly, that
+class `(1,2)` really is `R_{1,2}`, and that the four drawn levels are exactly those meeting the
+window.
+
+*Figure numbering note:* what were Figures 4 and 5 (after Figure 3 was added) are now Figures 6
+and 7. Theorem, lemma, definition and example numbers are unchanged.
+
+
 ### Renamed the manuscript
 
 `lattice_line_covers_preprint.tex` → **`lattice_line_covers_extended.tex`** (and likewise the PDF).
