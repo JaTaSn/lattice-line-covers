@@ -694,11 +694,10 @@ We now have all pieces needed to prove Theorem~\ref{thm:main}.
   to one residue class of levels. Put into \(\mathcal F\) all such lines for every sub-coset except
   one, reserved as follows: if \(z_k\in R_{k-1}\), reserve the lexicographically-least \((u_0,w_0)\)
   whose sub-coset does not contain \(z_k\) (possible since there are \(\ge4\) sub-cosets and only one
-  need be avoided); otherwise reserve the lexicographically-least \((u_0,w_0)\) outright. A concrete
-  rule is needed for the recursion to be a well-defined function, as is a concrete choice among the
-  \((s,t)\) that Lemma~\ref{lem:steering} only asserts to exist. Both are choice functions to be
-  supplied explicitly in a Lean formalization, not just existence claims. Let
-  \(R_k=R_{u_0,w_0}\) be that reserved sub-coset.
+  need be avoided); otherwise reserve the lexicographically-least \((u_0,w_0)\) outright. Let
+  \(R_k=R_{u_0,w_0}\) be that reserved sub-coset; Figure~\ref{fig:nesting} shows the first two
+  stages of the resulting chain \(\Z^2=R_0\supset R_1\supset R_2\). The recursion rests on two
+  selection rules, of rather different characters; see Remark~\ref{rem:choices}.
 
   The two quantities that matter going forward are
   genuinely different: the \emph{achieved direction} recorded for the density argument below is
@@ -712,6 +711,49 @@ We now have all pieces needed to prove Theorem~\ref{thm:main}.
   a direct check from the definition of \(R_{u_0,w_0}\) \eqref{eq:Rsub-def} (writing \(u=u_0+|s|u'\),
   \(w=w_0+|t|w'\) for the internal coordinates, since ``\(u\equiv u_0\pmod{|s|}\)'' means exactly this)
   shows \(R_{u_0,w_0}=R(n_1|s|,n_2|t|,x_0',y_0')\) on the nose.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[scale=0.42]
+    % Z^2 = R_0 > R_1 > R_2 for the illustrative run described in the caption.
+    % R_1 = R(2,3,0,1) = {x = 0 mod 2, y = 1 mod 3}
+    % R_2 = R(4,9,0,1) = {x = 0 mod 4, y = 1 mod 9}
+    \begin{scope}
+      \clip (-1.6,-2.6) rectangle (13.6,20.6);
+      \foreach \x in {-1,...,13} \foreach \y in {-2,...,20}
+        \fill[gray!25] (\x,\y) circle (0.10);
+      \draw[gray!55] (-1.6,0) -- (13.6,0);
+      \draw[gray!55] (0,-2.6) -- (0,20.6);
+      \foreach \x in {0,2,...,12} \foreach \y in {1,4,...,19}
+        \fill[gray!75] (\x,\y) circle (0.20);
+      \foreach \x in {0,4,8,12} \foreach \y in {1,10,19}
+        \fill[blue!65!black] (\x,\y) circle (0.31);
+      % z_1 = (0,0): in R_0, so stage 1 must reserve a sub-coset avoiding it
+      \draw[red!75!black, line width=0.9pt] (-0.30,-0.30) -- (0.30,0.30);
+      \draw[red!75!black, line width=0.9pt] (-0.30,0.30) -- (0.30,-0.30);
+    \end{scope}
+    \node[red!75!black, font=\scriptsize, right] at (0.5,-1.4) {$z_1=(0,0)$};
+    % legend: sample marker beside each name, so the encoding is readable without the caption
+    \fill[gray!45]       (14.1,16.0) circle (0.10);
+    \node[font=\scriptsize, right] at (14.4,16.0) {$R_0=\Z^2$};
+    \fill[gray!75]       (14.1,13.0) circle (0.20);
+    \node[font=\scriptsize, right] at (14.4,13.0) {$R_1$};
+    \fill[blue!65!black] (14.1,10.0) circle (0.31);
+    \node[font=\scriptsize, right] at (14.4,10.0) {$R_2$};
+  \end{tikzpicture}
+  \caption{The first two stages of the nested chain \(\Z^2=R_0\supset R_1\supset R_2\) built in the
+    proof of Theorem~\ref{thm:main}. Small grey dots are \(R_0=\Z^2\); medium dots
+    \(R_1=R(2,3,0,1)=\{x\equiv0\bmod2,\ y\equiv1\bmod3\}\); large dots
+    \(R_2=R(4,9,0,1)=\{x\equiv0\bmod4,\ y\equiv1\bmod9\}\). Each stage claims everything it does
+    \emph{not} reserve, so the region shrinks while the claimed set grows to fill \(\Z^2\).
+    The run shown takes \((s,t)=(2,3)\) at both stages and the enumeration point \(z_1=(0,0)\)
+    (crossed). Since \(z_1\in R_0\), stage~1 may not reserve the sub-coset containing it: the
+    lexicographically least \emph{eligible} residue pair is \((0,1)\) rather than \((0,0)\), which
+    is why \(R_1\) consists of \(y\equiv1\) rather than \(y\equiv0\) modulo \(3\). That reservation
+    rule is exactly the one the Lean formalization computes; the pairs \((s,t)\) are illustrative
+    only --- see Remark~\ref{rem:choices}.}
+  \label{fig:nesting}
+\end{figure}
 
   Write
   \(R_k=R(n_1^{(k)},n_2^{(k)},x_0^{(k)},y_0^{(k)})\) for this representation, i.e.\
@@ -771,8 +813,34 @@ We now have all pieces needed to prove Theorem~\ref{thm:main}.
 
 \end{proof}
 
-\section{A picture of the construction}
+\begin{remark}[The two selection rules]
+  \label{rem:choices}
+  The recursion in the proof above is not a definition until two things are pinned down: which
+  admissible pair \((s,t)\) to take among those Lemma~\ref{lem:steering} merely asserts to exist,
+  and which sub-coset to reserve. Neither affects the conclusion --- the argument uses only the
+  \emph{properties} of the chosen objects, never their identity --- but a recursion is a
+  well-defined function only once both are fixed. Informally one writes ``choose \(s,t\)'' and moves
+  on; a formalization cannot, since the recursion has to be an actual term.
 
+  The two are settled in genuinely different ways, and the contrast is worth noticing. The
+  reservation rule is \emph{computable}: the reserved pair is the lexicographically least element of
+  the finite set of residue pairs \((u_0,w_0)\in[0,|s|)\times[0,|t|)\) whose sub-coset avoids
+  \(z_k\) --- a condition that is vacuous when \(z_k\notin R_{k-1}\), which is exactly the
+  ``otherwise'' clause of the rule stated in the proof. That set is nonempty because there are at
+  least \(|s||t|\ge4\) sub-cosets and, by Lemma~\ref{lem:splitting-partition}, \(z_k\) lies in
+  exactly one of them, so at least three remain. The steering pair, by contrast, is obtained from
+  the existence statement by classical choice: Lemma~\ref{lem:steering} singles out no canonical
+  \((s,t)\), and the proof needs none.
+
+  So the construction is a definite object once an enumeration \((z_k)\), a dense sequence
+  \((\theta_k)\) and a selection of steering pairs are fixed; only the last of these is genuinely
+  arbitrary. Figure~\ref{fig:nesting} shows one such run.
+\end{remark}
+
+\section{Pictures of the construction}
+
+Figure~\ref{fig:nesting} above shows the nested regions \(R_k\) that drive the recursion;
+this section instead looks at what the construction \emph{achieves}.
 Figure~\ref{fig:directions} plots the first \(10\), \(20\), and \(100\) directions realized by an actual
 run of the construction (code in \texttt{code/}, targeting the golden-angle equidistributed
 sequence \(\theta_k = k\pi(\sqrt5-1)\bmod\pi\)), each direction shown as an antipodal pair of points

@@ -20,6 +20,38 @@ because that is what breaks cross-references from other work.
 
 ## 2026-08-21
 
+### New Figure 6: the nested chain, and a Remark on the two selection rules
+
+**No mathematical content changed**; the proof's argument is untouched. Three related edits:
+
+**Section renamed** "A picture of the construction" → **"Pictures of the construction"**, since it
+now has company.
+
+**Figure 6** draws `ℤ² = R₀ ⊃ R₁ ⊃ R₂` from the proof of Theorem 7 — three nesting levels in the
+house style, with the enumeration point `z₁ = (0,0)` crossed to show *why* stage 1 reserves the
+residue pair `(0,1)` and not `(0,0)`. Verified that `R₂ ⊆ R₁` and that `z₁ ∉ R₁`.
+
+**The reservation rule drawn is exactly the one the Lean formalization computes** (`resIdx =
+lexLeast resCandidates` in `MainRecursion.lean`). The pairs `(s,t) = (2,3)` are illustrative only,
+and the caption says so — because the formalization does **not** fix them: `sOf`/`tOf` are
+`Classical.choose` applied to the steering existence statement.
+
+**Remark 16 (The two selection rules)** replaces three sentences of methodological aside that sat
+mid-proof:
+
+> *"A concrete rule is needed for the recursion to be a well-defined function, as is a concrete
+> choice among the (s,t) that Lemma 14 only asserts to exist. Both are choice functions to be
+> supplied explicitly in a Lean formalization, not just existence claims."*
+
+The proof now states its rule and moves on, pointing forward. The Remark makes the point properly:
+that a recursion is a function only once both choices are fixed, that neither affects the
+conclusion, and — the part the original did not say — that **the two are settled in genuinely
+different ways**. The reservation is computable (lexicographically least eligible pair, from a set
+that is nonempty because `|s||t| ≥ 4` and Lemma 13 puts `z_k` in exactly one class); the steering
+pair is classical choice, since Lemma 14 singles out no canonical `(s,t)`. That asymmetry is
+visible in the Lean and was worth stating.
+
+
 ### Symbolic tags on the three most-cited equations
 
 Ranked by how often each numbered equation is actually cited, three stood out and now carry
