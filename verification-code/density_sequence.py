@@ -3,7 +3,7 @@ construction, steering toward a genuinely equidistributed target-angle sequence,
 first N of them on the unit circle -- a visual argument for density, complementing the
 crossing/coverage checks in trace_construction.py.
 
-Target angles: golden-angle equidistribution theta_k = k * pi * (sqrt(5)-1) (mod pi) -- a classical
+Target angles: golden-angle equidistribution theta_k = k * pi * (sqrt(5)-1)/2 (mod pi) -- a classical
 low-discrepancy sequence on the (mod-pi) circle of line-directions, dense and well-spread from the
 first few terms on. Direction is a LINE's direction (mod pi, not mod 2pi), matching this project's
 actual objects.

@@ -56,9 +56,13 @@ The report is licensed CC BY; the code in this repository is MIT (see [`LICENSE`
     LiTH-MAT-R 2026:02 (see [Published version](#published-version) above); the `.pdf` here is the
     exact file hosted on DiVA, not a local rebuild. A polished, mechanically-derived descendant of
     the Typst draft above, in LaTeX for proper bibliography/TikZ support.
-  - **arXiv version — not yet added.** Once submitted to arXiv (or HAL) and accepted, that
-    version lands here as `lattice_line_covers_arxiv.tex`/`.pdf`; until then this repository holds
-    only the two versions above, deliberately not a pre-acceptance draft.
+  - `lattice_line_covers_extended.tex`/`.pdf` — the pre-submission working draft heading toward
+    arXiv/HAL, diverging from the frozen report as review adds exposition, figures and remarks
+    (no proof or numbered-statement content has changed as of this writing) — see
+    `changes-wrt-report.md` for the full, dated record of every difference. Not yet submitted or
+    accepted anywhere; `arxiv/make-arxiv-package.sh` assembles the actual submission bundle
+    (`.tex`, only the figures it uses, and an `anc/` directory with the Typst working draft and
+    the full Lean formalization) once it's ready to go.
 - **`lean/`** — the complete Lean 4 formalization of the main theorem.
   - [`PROOF.md`](lean/PROOF.md) — the theorem statement in plain language, and step-by-step
     instructions to independently verify the proof yourself.
