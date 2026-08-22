@@ -927,20 +927,21 @@ on the unit circle (a line's direction is unsigned) and colored by its position 
 \end{remark}
 
 As a purely exploratory aside, Figure~\ref{fig:discmeasure} redraws the same \(100\) directions of
-Figure~\ref{fig:directions}, not as discrete points but as an accumulating measure on the closed
-unit disc: each realized direction contributes a weighted point mass at its two antipodal boundary
-points and a line mass along its diameter chord, with weight \(1/(k+5)\) so early directions
-dominate but not overwhelmingly. Nothing in this manuscript rests on it --- see the Acknowledgements
-for how it came about.
+Figure~\ref{fig:directions} as point and line masses on the closed unit disc, each realized
+direction contributing a dot at its two antipodal boundary points plus its diameter chord, weight
+\(1/(k+5)\) controlling size/width/opacity and color marking order of appearance --- softened
+deliberately (rather than the harsher \(1/k\)) so the first few directions read as emphasized, not
+as overwhelming everything realized afterward. Nothing in this manuscript rests on it --- see the
+Acknowledgements for how it came about.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/disc_measure.png}
-  \caption{The same \(100\) realized directions as Figure~\ref{fig:directions}, redrawn as an
-  accumulating measure on the closed unit disc rather than as discrete points: each direction
-  contributes a weighted point mass at its two boundary points plus a line mass along its diameter
-  chord, weight \(1/(k+5)\), shown at the same growing prefix lengths (here \(10\), \(20\), \(50\),
-  \(100\)). Purely exploratory --- not used anywhere else in this manuscript.}
+  \caption{The same \(100\) realized directions as Figure~\ref{fig:directions}, redrawn as point and
+  line masses on the closed unit disc: each direction contributes a dot at its two boundary points
+  plus its diameter chord, sized/weighted by \(1/(k+5)\) and colored by order of appearance (dark
+  purple = early, yellow-green = late), shown at the same growing prefix lengths (here \(10\),
+  \(20\), \(50\), \(100\)). Purely exploratory --- not used anywhere else in this manuscript.}
   \label{fig:discmeasure}
 \end{figure}
 
