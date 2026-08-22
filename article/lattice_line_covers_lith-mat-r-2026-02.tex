@@ -50,7 +50,20 @@
 \author{Jan Snellman \orcidlink{0009-0002-6676-5068}}
 \address{Matematiska Institutionen, Linköpings Universitet, 581 83 Linköping, Sweden}
 \email{jan.snellman@liu.se}
+% amsart normally prints \address/\email again as a standalone block at the very end of the
+% document (via \AtEndDocument, triggered by the \addresses token list -- see amsart.cls); Jan
+% asked for it not to hang alone on the last page (2026-08-13), so it's cleared here in favor of
+% showing it once, directly under the title/author instead.
+\makeatletter
+\let\addresses\@empty
+\makeatother
 \maketitle
+
+\begin{center}
+  \small
+  Matematiska Institutionen, Linköpings Universitet, 581\,83 Linköping, Sweden\\
+  \texttt{jan.snellman@liu.se}
+\end{center}
 
 \begin{abstract}
   We consider families of lines that cover every point of the integer lattice \(\Z^2\), subject to
@@ -745,6 +758,17 @@ directing Claude toward clearer exposition for human readers: restructuring the 
 explicitly labeled lemmas, and breaking up long equations for readability. The author then checked
 the final manuscript to the best of his ability, made final edits, and assumes full responsibility
 for any errors, mistakes, or gaps that remain.
+
+\section*{Funding}
+
+This research received no external funding. It was carried out as part of the author's regular
+duties at Link\"oping University, within the fraction of that employment allocated to research
+(approximately 10\%, the remainder being teaching).
+
+\section*{Conflicts of interest}
+
+The author declares no financial or non-financial conflicts of interest. The nature and extent of
+LLM assistance in producing this manuscript is disclosed in full in the Acknowledgements above.
 
 \begin{thebibliography}{9}
 

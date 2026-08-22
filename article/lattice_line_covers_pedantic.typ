@@ -308,7 +308,7 @@ Our main result:
 
 #leanstatus[
   *formally verified.* Theorem `LatticeLineCovers.rigidity` in
-  `lattice-line-covers-lean/LatticeLineCoversLean/Basic.lean`. (The Lean source itself
+  `lean/LatticeLineCoversLean/Basic.lean`. (The Lean source itself
   names its six integer parameters `p_i q_i p_j q_j c_i c_j` --- purely as
   identifier characters, with no indexed family behind them either; this note's renaming to
   $1,2$ is a presentational choice for this article, not a claim that the Lean statement
@@ -843,9 +843,9 @@ toward an _arbitrary prescribed_ target at every stage.
 All four proved theorems are independently checked, via `#print axioms`, to depend only on
 Lean's three standard axioms (`propext`, `Classical.choice`, `Quot.sound`) ---
 i.e. none of them rest on an unproved `sorry` anywhere in their dependency chain. The Lean
-source lives at `lattice-line-covers-lean/LatticeLineCoversLean/Basic.lean` in the same
-workspace as this note; that project's own `STATE.md`/`TODO.md`/`LOGBOOK.md`
-carry the full session-by-session history of the formalization effort.
+source lives at `lean/LatticeLineCoversLean/Basic.lean` in this same repository; see
+`lean/STRATEGY.md` and `lean/PROOF.md` for the formalization strategy and a
+non-expert-oriented explanation of what was proved.
 
 = A picture
 
@@ -855,7 +855,7 @@ sequence $theta_k = k pi (sqrt(5) - 1) med "mod" med pi$), each direction shown 
 on the unit circle (a line's direction is unsigned) and colored by its position in the sequence.
 
 #figure(
-  image("artefacts/density_directions.png", width: 100%),
+  image("figures/density_directions.png", width: 100%),
   caption: [Realized directions after $10$, $20$, and $100$ steps of the construction, colored by
   order (dark = early, light = late), with a thin path tracing consecutive jumps. The steering
   argument scatters rather than sweeps around the circle, since each target angle is chosen from an

@@ -47,12 +47,18 @@ The report is licensed CC BY; the code in this repository is MIT (see [`LICENSE`
 
 ## Repository layout
 
-- **`article/`** — the publication-track write-up (LaTeX, for arXiv/HAL/LiTH-MAT-R), published as
-  LiTH-MAT-R 2026:02 — see [Published version](#published-version) above. The
-  submission-track `.tex` file is a polished, mechanically-derived descendant of a Typst working
-  draft, `lattice_line_covers_pedantic.typ`, kept here unmodified in the form it was actually
-  developed in (annotations, changelog comments, and all) — see [`lean/STRATEGY.md`](lean/STRATEGY.md)
-  for how that draft doubled as the Lean formalization's guide.
+- **`article/`** — three versions of the write-up, at different stages:
+  - `lattice_line_covers_pedantic.typ`/`.pdf` — the Typst working draft that guided the Lean
+    formalization, kept here unmodified in the form it was actually developed in (annotations,
+    changelog comments, `#leanstatus` blocks marking which claims are formally verified, and all) —
+    see [`lean/STRATEGY.md`](lean/STRATEGY.md) for how it doubled as the formalization's guide.
+  - `lattice_line_covers_lith-mat-r-2026-02.tex`/`.pdf` — the version actually published as
+    LiTH-MAT-R 2026:02 (see [Published version](#published-version) above); the `.pdf` here is the
+    exact file hosted on DiVA, not a local rebuild. A polished, mechanically-derived descendant of
+    the Typst draft above, in LaTeX for proper bibliography/TikZ support.
+  - **arXiv version — not yet added.** Once submitted to arXiv (or HAL) and accepted, that
+    version lands here as `lattice_line_covers_arxiv.tex`/`.pdf`; until then this repository holds
+    only the two versions above, deliberately not a pre-acceptance draft.
 - **`lean/`** — the complete Lean 4 formalization of the main theorem.
   - [`PROOF.md`](lean/PROOF.md) — the theorem statement in plain language, and step-by-step
     instructions to independently verify the proof yourself.
