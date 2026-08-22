@@ -926,22 +926,29 @@ on the unit circle (a line's direction is unsigned) and colored by its position 
   particular run.
 \end{remark}
 
-As a purely exploratory aside, Figure~\ref{fig:discmeasure} redraws the same \(100\) directions of
-Figure~\ref{fig:directions} as point and line masses on the closed unit disc, each realized
-direction contributing a dot at its two antipodal boundary points plus its diameter chord, weight
-\(1/(k+5)\) controlling size/width/opacity and color marking order of appearance --- softened
-deliberately (rather than the harsher \(1/k\)) so the first few directions read as emphasized, not
-as overwhelming everything realized afterward. Nothing in this manuscript rests on it --- see the
-Acknowledgements for how it came about.
+As a purely exploratory aside, Figure~\ref{fig:discmeasure} redraws \(1000\) realized directions
+(extending the run behind Figure~\ref{fig:directions}) as point and line masses on the closed unit
+disc: each direction contributes a dot at its two antipodal boundary points plus its diameter
+chord, weighted by \(w_k=(k+5)^{-0.6}e^{-k/250}\). Unlike a weight such as \(1/k\) or \(1/(k+5)\),
+this one is \emph{summable}, so the resulting measure genuinely converges as \(k\to\infty\) to a
+fixed, permanently non-uniform limit --- no renormalization needed, and none of the visible
+structure is a finite-\(k\) artifact fading toward the uniform measure on \(\RP\). The exponent and
+cutoff were chosen so that no small handful of directions dominates the picture: the first \(5\)
+directions carry only \(9.3\%\) of the total mass, the first \(20\) carry \(26\%\), the first
+\(100\) carry \(62\%\); at \(k=1000\), \(99.6\%\) of the full \(k\to\infty\) total is already
+accounted for, so the figure is an honest rendering of the actual limit rather than an arbitrary
+truncation of it. Nothing in this manuscript rests on it --- see the Acknowledgements for how it
+came about.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/disc_measure.png}
-  \caption{The same \(100\) realized directions as Figure~\ref{fig:directions}, redrawn as point and
-  line masses on the closed unit disc: each direction contributes a dot at its two boundary points
-  plus its diameter chord, sized/weighted by \(1/(k+5)\) and colored by order of appearance (dark
-  purple = early, yellow-green = late), shown at the same growing prefix lengths (here \(10\),
-  \(20\), \(50\), \(100\)). Purely exploratory --- not used anywhere else in this manuscript.}
+  \caption{\(1000\) realized directions redrawn as point and line masses on the closed unit disc,
+  weighted by the summable \(w_k=(k+5)^{-0.6}e^{-k/250}\) so the picture shows a genuine limiting
+  measure rather than a step toward the uniform measure on \(\RP\) (see main text). Left: a
+  smoothed density reading. Right: an order-colored overlay of the same weighted points and chords
+  (dark purple = early, yellow-green = late). Purely exploratory --- not used anywhere else in this
+  manuscript.}
   \label{fig:discmeasure}
 \end{figure}
 
