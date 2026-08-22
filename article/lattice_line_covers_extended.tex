@@ -926,6 +926,24 @@ on the unit circle (a line's direction is unsigned) and colored by its position 
   particular run.
 \end{remark}
 
+As a purely exploratory aside, Figure~\ref{fig:discmeasure} redraws the same \(100\) directions of
+Figure~\ref{fig:directions}, not as discrete points but as an accumulating measure on the closed
+unit disc: each realized direction contributes a weighted point mass at its two antipodal boundary
+points and a line mass along its diameter chord, with weight \(1/(k+5)\) so early directions
+dominate but not overwhelmingly. Nothing in this manuscript rests on it --- see the Acknowledgements
+for how it came about.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/disc_measure.png}
+  \caption{The same \(100\) realized directions as Figure~\ref{fig:directions}, redrawn as an
+  accumulating measure on the closed unit disc rather than as discrete points: each direction
+  contributes a weighted point mass at its two boundary points plus a line mass along its diameter
+  chord, weight \(1/(k+5)\), shown at the same growing prefix lengths (here \(10\), \(20\), \(50\),
+  \(100\)). Purely exploratory --- not used anywhere else in this manuscript.}
+  \label{fig:discmeasure}
+\end{figure}
+
 \begin{remark}
   Both the splitting mechanism (Lemmas~\ref{lem:splitting-coset}--\ref{lem:splitting-partition})
   and the sign-generality of Lemma~\ref{lem:steering} were checked by direct brute-force simulation
@@ -981,11 +999,15 @@ Uscka-Wehlou's dissertation~\cite{UsckaWehlou2009}.
 \section*{Acknowledgements}
 
 This problem occurred to the author during an idle conversation with colleagues
-(in the department coffee room) about covering the lattice \(\Z^2\) with lines.
+F.B.\ and T.E.\ (in the department coffee room) about covering the lattice \(\Z^2\) with lines.
 It was considered as a useful test for LLM-assisted proof discovery and proof
 formalization, since the author conjectured that the proof of the result,
 if it was indeed true, should only use elementary methods, which are already in
 lean (Mathlib).
+
+Figure~\ref{fig:discmeasure} was inspired by a remark --- certainly misunderstood by the author ---
+about a relation to Besicovitch--Orponen theory, made by his colleague B.E.; the keyword
+``measure'' stuck.
 
 The results in this manuscript: the reformulation, the
 rigidity and coset lemmas, the recursive construction, and both rounds of
