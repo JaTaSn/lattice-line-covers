@@ -637,11 +637,11 @@ Lemma~\ref{lem:splitting-coset} avoids, via the primitivity argument built into 
   both depending only on \(n_1\), where \(\omega(n_1)\) is the number of distinct prime divisors of
   \(n_1\). For a prime \(p\nmid n_1n_2\) and any interval \(I\subset\Z\) of length \(L\),
   inclusion--exclusion over the divisors of \(n_1p\) gives
-  \begin{equation}
-    \label{eq:steering-sieve}
-    \#\{t\in I : \gcd(t,n_1p)=1\} \;\ge\; L\prod_{r\mid n_1}\Big(1-\frac1r\Big)\Big(1-\frac1p\Big) -
-    2^{\omega(n_1)+1} \;\ge\; \delta L - E,
-  \end{equation}
+  \begin{align}
+    \#\{t\in I : \gcd(t,n_1p)=1\}
+      &\;\ge\; L\prod_{r\mid n_1}\Big(1-\frac1r\Big)\Big(1-\frac1p\Big) - 2^{\omega(n_1)+1} \notag\\
+      &\;\ge\; \delta L - E, \label{eq:steering-sieve}
+  \end{align}
   using \(p\ge2\) for the last factor. Fix
   \begin{equation}
     \label{eq:steering-L0}
