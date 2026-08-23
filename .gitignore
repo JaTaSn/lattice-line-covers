@@ -1,6 +1,8 @@
 
-# arXiv submission tarballs -- derived, rebuild with arxiv/make-arxiv-package.sh
+# arXiv submission tarball and its browsable unpacked copy -- both derived, rebuild
+# with arxiv/make-arxiv-package.sh
 arxiv/*.tar.gz
+arxiv/lattice-line-covers-arxiv-*/
 
 # LaTeX build products
 *.aux

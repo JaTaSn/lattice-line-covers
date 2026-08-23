@@ -1,0 +1,120 @@
+% Changelog (reverse chronological):
+% 2026-08-23 - Claude: created, at Jan's request, as a companion BibTeX database for the arXiv
+%   submission folder -- exactly the 11 references actually \bibitem-ed in
+%   article/lattice_line_covers_extended.tex, converted from that inline thebibliography (kept
+%   verbatim there; NOT wired into this .bib via \bibliography{}/\bibliographystyle{}). Deliberate:
+%   arXiv does not run BibTeX itself, so a submission that depends on one either has to include a
+%   pre-built .bbl (a known source of drift/failure if it goes stale relative to the .bib) or risks
+%   an uncompilable upload; the inline thebibliography sidesteps that class of problem entirely,
+%   and this file exists for reference/reuse (e.g. importing into a reference manager) rather than
+%   to drive the compile. Six of the eleven entries already existed, near-identically, in
+%   ../../../ai-workspace/projects/lattice-line-covers/literature/references.bib (that file covers
+%   the full research corpus, not just what's cited here) -- reused verbatim where they matched;
+%   Eisenbud1995, Robbiano1985, gitrepo, report2026, zenodo added fresh from the manuscript's own
+%   \bibitem text, since none of the five existed in that file yet.
+
+@article{CremonaKoymans2026,
+  author     = {Cremona, J. E. and Koymans, P.},
+  title      = {Lattice Coverings and Homogeneous Covering Congruences},
+  journal    = {arXiv preprint},
+  eprint     = {2601.03212},
+  eprinttype = {arxiv},
+  version    = {v2},
+  year       = {2026}
+}
+
+@inproceedings{Corzatt1985,
+  author    = {Corzatt, C. E.},
+  title     = {Covering convex sets of lattice points with straight lines},
+  booktitle = {Proceedings of the Sundance Conference on Combinatorics and Related Topics (Sundance, UT, 1985)},
+  series    = {Congressus Numerantium},
+  volume    = {50},
+  pages     = {129--135},
+  year      = {1985}
+}
+
+@article{Erdos1950,
+  author  = {Erd{\H o}s, P.},
+  title   = {On integers of the form $2^k+p$ and some related problems},
+  journal = {Summa Brasiliensis Mathematicae},
+  volume  = {2},
+  pages   = {113--123},
+  year    = {1950}
+}
+
+@book{HardyWright2008,
+  author    = {Hardy, G. H. and Wright, E. M.},
+  title     = {An Introduction to the Theory of Numbers},
+  edition   = {6th},
+  note      = {Revised by D. R. Heath-Brown and J. H. Silverman},
+  publisher = {Oxford University Press},
+  address   = {Oxford},
+  year      = {2008}
+}
+
+@book{Kiselman2022,
+  author    = {Kiselman, C. O.},
+  title     = {Elements of Digital Geometry, Mathematical Morphology, and Discrete Optimization},
+  publisher = {World Scientific},
+  address   = {Singapore},
+  year      = {2022}
+}
+
+@phdthesis{UsckaWehlou2009,
+  author = {Uscka-Wehlou, H.},
+  title  = {Digital Lines, Sturmian Words, and Continued Fractions},
+  school = {Uppsala University},
+  series = {Uppsala Dissertations in Mathematics},
+  number = {65},
+  year   = {2009}
+}
+
+@book{Eisenbud1995,
+  author    = {Eisenbud, D.},
+  title     = {Commutative Algebra with a View Toward Algebraic Geometry},
+  series    = {Graduate Texts in Mathematics},
+  volume    = {150},
+  publisher = {Springer-Verlag},
+  address   = {New York},
+  year      = {1995}
+}
+
+@inproceedings{Robbiano1985,
+  author    = {Robbiano, L.},
+  title     = {Term orderings on the polynomial ring},
+  booktitle = {Proceedings of EUROCAL '85, Vol. 2 (Linz, 1985)},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {204},
+  publisher = {Springer},
+  address   = {Berlin},
+  pages     = {513--517},
+  year      = {1985}
+}
+
+@misc{gitrepo,
+  author       = {Snellman, J. and {Claude (Anthropic)}},
+  title        = {lattice-line-covers (source repository, including the Lean/Mathlib formalization and reference certificates)},
+  year         = {2026},
+  howpublished = {\url{https://gitlab.liu.se/jansn19/lattice-line-covers}}
+}
+
+@techreport{report2026,
+  author      = {Snellman, J.},
+  title       = {On the directions occurring in lattice-line coverings of the integer plane},
+  institution = {Link{\"o}ping University Electronic Press},
+  type        = {LiTH-MAT-R},
+  number      = {2026:02},
+  issn        = {0348-2960},
+  year        = {2026},
+  doi         = {10.3384/LiTH-MAT-R-2026-02},
+  note        = {Open access via DiVA, urn:nbn:se:liu:diva-226766}
+}
+
+@misc{zenodo,
+  author    = {Snellman, J.},
+  title     = {lattice-line-covers: Lean/Mathlib formalization and verification code},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.21916622},
+  note      = {Link{\"o}ping University community. Concept DOI (all versions) 10.5281/zenodo.21916621; this record is the snapshot 10.5281/zenodo.21916622}
+}

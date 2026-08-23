@@ -1,11 +1,12 @@
 #!/bin/bash
-# Assemble an arXiv submission tarball for this paper.
+# Assemble an arXiv submission folder (and tarball) for this paper.
 #
 #     ./arxiv/make-arxiv-package.sh
 #
-# Produces arxiv/lattice-line-covers-arxiv-<date>.tar.gz, which is what you upload.
-# The tarball is gitignored: it is derived from the repository, so committing it
-# would duplicate the .tex and figures and let the two drift apart. Rebuild it
+# Produces arxiv/lattice-line-covers-arxiv-<date>.tar.gz (upload this) AND a plain,
+# browsable directory arxiv/lattice-line-covers-arxiv-<date>/ with the same contents
+# (look at this). Both are gitignored: derived from the repository, so committing
+# either would duplicate the .tex/figures and let the copies drift apart. Rebuild
 # instead -- that is the whole point of this script.
 #
 # WHAT GOES IN, AND WHY
@@ -15,7 +16,14 @@
 # compiled, never rendered). So:
 #
 #   lattice_line_covers_extended.tex   the manuscript -- arXiv wants LaTeX
-#   figures/*.png                      only the two the .tex actually includes
+#   lattice_line_covers_extended.bib   companion BibTeX database, Jan's explicit
+#                                      request (2026-08-23) -- NOT wired into the
+#                                      compile (see DELIBERATELY EXCLUDED below for
+#                                      why); arXiv ignores files the .tex doesn't
+#                                      reference, so this just rides along for
+#                                      reference/reuse
+#   figures/*.png                      every figure the .tex actually includes
+#                                      (auto-detected below, not a fixed list)
 #   anc/lattice_line_covers_pedantic.typ
 #                                      the Typst working draft that was the real
 #                                      source of truth while the Lean proof was
@@ -33,7 +41,8 @@
 #
 # DELIBERATELY EXCLUDED
 #   .bbl        not needed: the paper uses an inline thebibliography, so there is
-#               no BibTeX pass for arXiv to fail to run
+#               no BibTeX pass for arXiv to fail to run -- the .bib above rides
+#               along as a reference copy only, never \bibliography{}-included
 #   .aux .log .out .synctex.gz   build droppings; arXiv rejects some outright
 #   figures/chessboard-figure.*  not referenced by the .tex (it illustrates the
 #               README, not the paper)
@@ -44,6 +53,7 @@ cd "$(dirname "$0")/.."
 
 STAMP=$(date +%Y-%m-%d)
 OUT="arxiv/lattice-line-covers-arxiv-${STAMP}.tar.gz"
+FOLDER="arxiv/lattice-line-covers-arxiv-${STAMP}"
 BUILD=$(mktemp -d)
 trap 'rm -rf "$BUILD"' EXIT
 
@@ -51,6 +61,7 @@ echo "==> assembling"
 mkdir -p "$BUILD/figures" "$BUILD/anc"
 
 cp article/lattice_line_covers_extended.tex "$BUILD/"
+cp arxiv/lattice_line_covers_extended.bib "$BUILD/"
 
 # Copy exactly the figures the .tex includes -- not the whole directory, so an
 # unused figure can never silently bloat the upload.
@@ -92,10 +103,17 @@ rm -f "$BUILD"/*.aux "$BUILD"/*.log "$BUILD"/*.out "$BUILD"/*.synctex.gz "$BUILD
 
 echo "==> packing"
 tar czf "$OUT" -C "$BUILD" .
+
+echo "==> leaving a browsable copy"
+rm -rf "$FOLDER"
+mkdir -p "$FOLDER"
+cp -r "$BUILD"/. "$FOLDER"/
+
 echo
 echo "    $OUT  ($(du -h "$OUT" | cut -f1))"
+echo "    $FOLDER/  (same contents, unpacked)"
 echo
 tar tzf "$OUT" | sed 's/^/      /'
 echo
-echo "Upload that tarball to arXiv. It will compile the .tex and offer everything"
-echo "under anc/ as ancillary downloads."
+echo "Upload the tarball to arXiv -- it will compile the .tex and offer everything"
+echo "under anc/ as ancillary downloads. Browse the folder for a quick look first."
