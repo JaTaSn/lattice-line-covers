@@ -653,8 +653,9 @@ Lemma~\ref{lem:splitting-coset} avoids, via the primitivity argument built into 
     \label{eq:steering-p-choice}
     L_0 + 2 \;<\; \frac{\varepsilon n_1p}{n_2}
   \end{equation}
-  (possible since the right side \(\to\infty\) as \(p\to\infty\), for fixed \(\varepsilon,n_1,n_2\); note
-  \eqref{eq:steering-p-choice} does not involve \(\mu\) at all, unlike \(t_0\) below), set \(s=p\) and
+  This is possible since the right side \(\to\infty\) as \(p\to\infty\), for fixed
+  \(\varepsilon,n_1,n_2\). Note that \eqref{eq:steering-p-choice} does not involve \(\mu\) at all,
+  unlike \(t_0\) below. Set \(s=p\) and
   \begin{equation}
     \label{eq:steering-t0}
     t_0 = \Big\lfloor \frac{\mu n_1p}{n_2} \Big\rfloor + 2.
@@ -693,10 +694,10 @@ toward an \emph{arbitrary prescribed} target at every stage.
   If \(X\) is a \(T_1\) topological space with no isolated points, \(D\subseteq X\) is dense, and
   \(F\subset X\) is finite, then \(D\setminus F\) is still dense in \(X\). This follows since any
   nonempty open \(U\) is itself infinite, as no point of \(X\) is isolated; so \(U\setminus F\) is
-  nonempty and open, hence meets \(D\), giving a point of \(D\setminus F\) in \(U\). Applied with
-  \(X=\RP\), which is compact, metric, hence \(T_1\), and has no isolated points (it is a circle), and
-  \(D=\{\theta_k\}_{k\ge1}\): every tail
-  \(\{\theta_k\}_{k\ge N}\) is dense, since it contains \(D\setminus\{\theta_1,\dots,\theta_{N-1}\}\).
+  nonempty and open, hence meets \(D\), giving a point of \(D\setminus F\) in \(U\). If we apply this
+  with \(X=\RP\) --- compact, metric, hence \(T_1\), and with no isolated points, since it is a
+  circle --- and \(D=\{\theta_k\}_{k\ge1}\), then every tail \(\{\theta_k\}_{k\ge N}\) is dense too,
+  since it contains \(D\setminus\{\theta_1,\dots,\theta_{N-1}\}\).
   This is the fact the density argument below needs beyond mere density of \(\{\theta_k\}\) itself
   --- without ``no isolated points'' it can fail (e.g.\ a sequence dense in \(\{0\}\cup[1,2]\) that
   visits \(0\) only once).
@@ -709,31 +710,31 @@ We now have all pieces needed to prove Theorem~\ref{thm:main}.
   \([0,\pi)\) (e.g.\ \(\theta_k=k\alpha\bmod\pi\) for \(\alpha/\pi\) irrational, by equidistribution of
   the irrational rotation). Set \(R_0=\Z^2\), i.e.\ \((n_1,n_2,x_0,y_0)=(1,1,0,0)\).
 
-  Given \(R_{k-1}=R(n_1,n_2,x_0,y_0)\), apply Lemma~\ref{lem:steering} to find \(s,t\) (possibly
-  negative --- Lemma~\ref{lem:steering} allows this, needed to reach both signs of slope) realizing
-  a direction within \(1/k\) of \(\theta_k\), and apply
+  Given \(R_{k-1}=R(n_1,n_2,x_0,y_0)\), apply Lemma~\ref{lem:steering} to find \(s,t\) realizing a
+  direction within \(1/k\) of \(\theta_k\) --- \(s,t\) may come out negative, and
+  Lemma~\ref{lem:steering} allows this, since both signs of slope need to be reachable. Then apply
   Lemmas~\ref{lem:splitting-coset}--\ref{lem:splitting-partition} to split \(R_{k-1}\) into its
   \(|s||t|\ge4\) sub-cosets, each fully coverable by direction \((P_k,Q_k)=(n_1s,n_2t)\) restricted
   to one residue class of levels. Put into \(\mathcal F\) all such lines for every sub-coset except
-  one, reserved as follows: if \(z_k\in R_{k-1}\), reserve the lexicographically-least \((u_0,w_0)\)
-  whose sub-coset does not contain \(z_k\) (possible since there are \(\ge4\) sub-cosets and only one
-  need be avoided); otherwise reserve the lexicographically-least \((u_0,w_0)\) outright. Let
+  one: if \(z_k\in R_{k-1}\), reserve the lexicographically-least \((u_0,w_0)\) whose sub-coset does
+  not contain \(z_k\), which is possible since there are \(\ge4\) sub-cosets and only one need be
+  avoided; otherwise reserve the lexicographically-least \((u_0,w_0)\) outright. Let
   \(R_k=R_{u_0,w_0}\) be that reserved sub-coset; Figure~\ref{fig:nesting} shows the first two
   stages of the resulting chain \(\Z^2=R_0\supset R_1\supset R_2\). The recursion rests on two
   selection rules, of rather different characters; see Remark~\ref{rem:choices}.
 
-  The two quantities that matter going forward are
-  genuinely different: the \emph{achieved direction} recorded for the density argument below is
-  the (possibly signed) pair \((P_k,Q_k)=(n_1s,n_2t)\), while \(R_k\) itself, to serve as the input
-  \(R(n_1',n_2',x_0',y_0')\) to the \emph{next} stage's application of Lemma~\ref{lem:steering}
-  (whose hypotheses require positive \(n_1',n_2'\), as does Definition~\ref{def:Rcoset}), must use
-  the \emph{positive} pair
+  The two quantities that matter going forward are genuinely different. The \emph{achieved
+  direction} recorded for the density argument below is the possibly-signed pair
+  \((P_k,Q_k)=(n_1s,n_2t)\). But \(R_k\) itself must serve as the input \(R(n_1',n_2',x_0',y_0')\)
+  to the \emph{next} stage's application of Lemma~\ref{lem:steering}, and that lemma's hypotheses
+  require positive \(n_1',n_2'\), just as Definition~\ref{def:Rcoset} does; so \(R_k\) must instead
+  be written using the \emph{positive} pair
   \[
-    n_1'=n_1|s|, \quad n_2'=n_2|t|, \quad x_0'=x_0+n_1u_0, \quad y_0'=y_0+n_2w_0:
+    n_1'=n_1|s|, \quad n_2'=n_2|t|, \quad x_0'=x_0+n_1u_0, \quad y_0'=y_0+n_2w_0.
   \]
-  a direct check from the definition of \(R_{u_0,w_0}\) \eqref{eq:Rsub-def} (writing \(u=u_0+|s|u'\),
-  \(w=w_0+|t|w'\) for the internal coordinates, since ``\(u\equiv u_0\pmod{|s|}\)'' means exactly this)
-  shows \(R_{u_0,w_0}=R(n_1|s|,n_2|t|,x_0',y_0')\) on the nose.
+  If we write the internal coordinates as \(u=u_0+|s|u'\), \(w=w_0+|t|w'\) --- exactly what
+  ``\(u\equiv u_0\pmod{|s|}\)'' means --- then a direct check against the definition of
+  \(R_{u_0,w_0}\)~\eqref{eq:Rsub-def} shows \(R_{u_0,w_0}=R(n_1|s|,n_2|t|,x_0',y_0')\) on the nose.
 
 \begin{figure}[htbp]
   \centering
@@ -832,18 +833,18 @@ We now have all pieces needed to prove Theorem~\ref{thm:main}.
   from different stages never share a lattice point, and distinct lines of the same direction from
   the same stage are disjoint level sets of the same \(\varphi_{(P_k,Q_k)}\), so never share one
   either.
-  (Different stages in fact always realize different directions: \(|P_k|=n_1^{(k)}\) is
+  Different stages in fact always realize different directions: \(|P_k|=n_1^{(k)}\) is
   strictly increasing in \(k\), since
-  \[n_1^{(k)}=n_1^{(k-1)}|s_k|\ge2n_1^{(k-1)};\]
-  though the  argument above does not need this.)
+  \[n_1^{(k)}=n_1^{(k-1)}|s_k|\ge2n_1^{(k-1)}.\]
+  The argument above does not need this.
 
   \emph{Density.} Fix \(\theta\in\RP\) and \(\varepsilon>0\). By Remark~\ref{rem:tail-density}, every
   tail \(\{\theta_k\}_{k\ge N}\) is dense in \(\RP\); so for any \(N\) there is some \(k\ge N\) with
   \(\theta_k\) within \(\varepsilon/2\) of \(\theta\). Taking
   \(N>2/\varepsilon\), the corresponding achieved direction \((P_k,Q_k)\) --- within \(1/k<\varepsilon/2\)
-  of \(\theta_k\) --- then lies within \(\varepsilon\) of \(\theta\). (Each \((P_k,Q_k)\) is genuinely
+  of \(\theta_k\) --- then lies within \(\varepsilon\) of \(\theta\). Each \((P_k,Q_k)\) is genuinely
   realized in \(\mathcal F\): at least \(|s||t|-1\ge3\) of the \(\ge4\) sub-cosets at stage \(k\) are
-  claimed, all nonempty, each contributing lines of that direction.) So every \(\theta\in\RP\) is a
+  claimed, all nonempty, each contributing lines of that direction. So every \(\theta\in\RP\) is a
   limit of directions realized in \(\mathcal F\): the realized direction set is dense.
 
 \end{proof}
@@ -884,17 +885,17 @@ We now have all pieces needed to prove Theorem~\ref{thm:main}.
   So classical choice here is a convenience, not a necessity: taking the graded-least admissible
   pair makes the steering rule computable too, and with it the recursion as a whole. We keep the
   existential form because that is what the argument uses, and no canonical pair is needed for the
-  theorem. (For term orders on \(\N^n\), which are required in addition to respect addition --- a
-  constraint of no use here --- the possible order types are exactly \(\omega^1,\dots,\omega^n\).
-  This is a consequence of the classification of such orders: by Robbiano's
-  theorem~\cite{Robbiano1985} every one of them is given by a real matrix acting on exponent vectors
-  and compared lexicographically, and Robbiano settles as well \emph{when two matrices determine the
-  same order}, so the representation is genuinely understood rather than merely available. Eisenbud
-  puts the classification in the equivalent form that every monomial order is a lexicographic
-  product of at most \(n\) weight orders~\cite[Exercise~15.13]{Eisenbud1995}; the number of factors
-  is then the exponent of the order type. The moral survives in the present looser setting: what a
-  terminating search needs is not compatibility with the group structure, but order type
-  \(\omega\).)
+  theorem.\footnote{For term orders on \(\N^n\), which are required in addition to respect addition
+  --- a constraint of no use here --- the possible order types are exactly
+  \(\omega^1,\dots,\omega^n\). This is a consequence of the classification of such orders: by
+  Robbiano's theorem~\cite{Robbiano1985} every one of them is given by a real matrix acting on
+  exponent vectors and compared lexicographically, and Robbiano settles as well \emph{when two
+  matrices determine the same order}, so the representation is genuinely understood rather than
+  merely available. Eisenbud puts the classification in the equivalent form that every monomial
+  order is a lexicographic product of at most \(n\) weight orders~\cite[Exercise~15.13]{Eisenbud1995};
+  the number of factors is then the exponent of the order type. The moral survives in the present
+  looser setting: what a terminating search needs is not compatibility with the group structure, but
+  order type \(\omega\).}
 
   So the construction is a definite object once an enumeration \((z_k)\), a dense sequence
   \((\theta_k)\) and a selection of steering pairs are fixed; only the last of these is genuinely
@@ -1019,24 +1020,6 @@ of Figure~\ref{fig:coveragetime}.
   \label{fig:linehittingtime}
 \end{figure}
 
-\begin{remark}
-  Both the splitting mechanism (Lemmas~\ref{lem:splitting-coset}--\ref{lem:splitting-partition})
-  and the sign-generality of Lemma~\ref{lem:steering} were checked by direct brute-force simulation
-  (exhaustive crossing and coverage checks on finite windows up to \(81\times81\), including
-  adversarial diagonal and sign-alternating schedules) before being trusted; a splitting step
-  without the primitivity safeguard built into
-  Lemma~\ref{lem:splitting-coset} was found this way to be genuinely flawed rather than merely
-  under-justified. The full argument was also read independently by a second reader (another
-  Claude agent) working from the statement of the lemmas alone, who found a real gap: restricting
-  \(s,t\) to be positive only reaches half of \(\RP\), and existence of \emph{some} admissible move at each stage does not imply the ability to steer
-  toward an \emph{arbitrary} target --- both addressed in the versions of
-  Lemmas~\ref{lem:splitting-coset}--\ref{lem:splitting-partition} and~\ref{lem:steering} given
-  here). A machine-checked (Lean/Mathlib) formalization of this argument has also been completed,
-  as a separate, complementary effort, available at~\cite{gitrepo}; brute-force simulation and
-  independent reading catch different classes of error than a machine-checked proof does, and vice
-  versa.
-\end{remark}
-
 \section{Related work}
 
 The reformulation via \(\varphi_d\) and the resulting rigidity phenomenon (Lemma~\ref{lem:rigidity})
@@ -1051,7 +1034,7 @@ index) is structurally reminiscent of the splitting used here, one rank up.
 
 A different classical result addresses a related but distinct question about how many directions a
 covering needs. Corzatt~\cite{Corzatt1985} conjectured that if a \emph{finite, convex} set of lattice
-points is covered by \(n\) lines (with no constraint on where the lines may cross), the lines can
+points is covered by \(n\) lines, with no constraint on where the lines may cross, the lines can
 always be chosen to use at most four distinct slopes. Our setting is the opposite regime: an
 infinite, unbounded point set, with a crossing-avoidance constraint standing in for a bound on the
 number of lines, and correspondingly the answer is qualitatively different: densely many
@@ -1071,7 +1054,44 @@ Uscka-Wehlou's dissertation~\cite{UsckaWehlou2009}.
   different directions meet at a lattice point, and determine which sets of directions can occur.
 \end{openproblem}
 
-\section*{Acknowledgements}
+\section*{AI disclosure}
+
+The results in this manuscript --- the reformulation, the rigidity and coset lemmas, the
+recursive construction, and both rounds of error-correction (one caught by numerical simulation,
+one by an independent review) --- were found by Claude (Anthropic), working with the author in an
+interactive session. This manuscript was likewise produced by the author and Claude jointly, with
+the author mainly directing Claude toward clearer exposition for human readers: restructuring the
+proofs into short, explicitly labeled lemmas, and breaking up long equations for readability. The
+author then checked the final manuscript to the best of his ability, made final edits, and assumes
+full responsibility for any errors, mistakes, or gaps that remain.
+
+\section*{Description of the work process}
+
+Both the splitting mechanism (Lemmas~\ref{lem:splitting-coset}--\ref{lem:splitting-partition}) and
+the sign-generality of Lemma~\ref{lem:steering} were checked by direct brute-force simulation
+(exhaustive crossing and coverage checks on finite windows up to \(81\times81\), including
+adversarial diagonal and sign-alternating schedules) before being trusted; a splitting step
+without the primitivity safeguard built into Lemma~\ref{lem:splitting-coset} was found this way to
+be genuinely flawed rather than merely under-justified. The full argument was also read
+independently by a second reader (another Claude agent) working from the statement of the lemmas
+alone, who found a real gap: restricting \(s,t\) to be positive only reaches half of \(\RP\), and
+existence of \emph{some} admissible move at each stage does not imply the ability to steer toward
+an \emph{arbitrary} target --- both addressed in the versions of
+Lemmas~\ref{lem:splitting-coset}--\ref{lem:splitting-partition} and~\ref{lem:steering} given here.
+A machine-checked (Lean/Mathlib) formalization of this argument has also been completed, as a
+separate, complementary effort, available at~\cite{gitrepo}; brute-force simulation and
+independent reading catch different classes of error than a machine-checked proof does, and vice
+versa.
+
+The additional references collected in the repository's extended-reference list \cite{gitrepo}
+were located and verified by Claude via web search. A list of ``certificates'' showing how each
+reference is used in this manuscript (this ``certificate of non-hallucination''), together with a
+more detailed explanation of the whole process of producing this manuscript, from inception to
+exploration to proof discovery to proof formalization and verification, are described in the
+gitlab repository \cite{gitrepo}; the formalization and verification code is also archived, with a
+citable DOI, on Zenodo \cite{zenodo}.
+
+\section*{Acknowledgement}
 
 This problem occurred to the author during an idle conversation with colleagues
 F.B.\ and T.E.\ (in the department coffee room) about covering the lattice \(\Z^2\) with lines.
@@ -1084,25 +1104,6 @@ Figure~\ref{fig:discmeasure} was inspired by a remark --- certainly misunderstoo
 about a relation to Besicovitch--Orponen theory, made by his colleague B.E.; the keyword
 ``measure'' stuck.
 
-The results in this manuscript: the reformulation, the
-rigidity and coset lemmas, the recursive construction, and both rounds of
-error-correction (one caught by numerical simulation, one by an independent
-review), were found by Claude (Anthropic), working with the author in an
-interactive session. The additional references collected in the repository's
-extended-reference list \cite{gitrepo} were located and verified by Claude via
-web search. A list of ``certificates'' showing how each reference is used in this manuscript (this
-``certificate of non-hallucination''), together with a more detailed explanation of the whole
-process of producing this manuscript, from inception to exploration to proof discovery to proof
-formalization and verification, are described in the gitlab repository \cite{gitrepo}; the
-formalization and verification code is also archived, with a citable DOI, on Zenodo
-\cite{zenodo}.
-
-This manuscript was likewise produced by the author and Claude jointly, with the author mainly
-directing Claude toward clearer exposition for human readers: restructuring the proofs into short,
-explicitly labeled lemmas, and breaking up long equations for readability. The author then checked
-the final manuscript to the best of his ability, made final edits, and assumes full responsibility
-for any errors, mistakes, or gaps that remain.
-
 \section*{Funding}
 
 This research received no external funding. It was carried out as part of the author's regular
@@ -1112,7 +1113,38 @@ remainder being teaching and other duties.
 \section*{Conflicts of interest}
 
 The author declares no financial or non-financial conflicts of interest. The nature and extent of
-LLM assistance in producing this manuscript is disclosed in full in the Acknowledgements above.
+LLM assistance in producing this manuscript is disclosed in full in the AI disclosure and
+Description of the work process sections above.
+
+\section*{Notation}
+
+Notation used across more than one later result, in order of first appearance; symbols local to a
+single proof are omitted.
+
+\begin{center}
+\begin{tabular}{@{}p{0.24\textwidth}p{0.48\textwidth}p{0.19\textwidth}@{}}
+\hline
+\textbf{Symbol} & \textbf{Meaning} & \textbf{Defined in} \\
+\hline
+\(\RP\) & space of line directions, \(\theta\in[0,\pi)\) & \S1, after Def.~\ref{def:direction} \\
+\(d=(p,q)\) & primitive direction, \(\gcd(p,q)=1\) & Def.~\ref{def:direction} \\
+\(\varphi_d(x,y)=qx-py\) & direction homomorphism \(\Z^2\to\Z\) & Def.~\ref{def:direction},
+  \eqref{eq:phi-def} \\
+\(\ell_{d,c}\) & lattice line, \(\varphi_d^{-1}(c)\) & Def.~\ref{def:lline}, \eqref{eq:lline-def} \\
+\(\mathcal F\) & covering family & Def.~\ref{def:family} \\
+\(\Delta=p_1q_2-p_2q_1\) & determinant of two directions & Lemma~\ref{lem:rigidity},
+  \eqref{eq:Delta-def} \\
+\(R(n_1,n_2,x_0,y_0)\) & rank-2 coset in \(\Z^2\) & Def.~\ref{def:Rcoset}, \eqref{eq:Rcoset-def} \\
+\(R_{u_0,w_0}\) & sub-coset of \(R\) & \eqref{eq:Rsub-def} \\
+\((P,Q)\), \((P_k,Q_k)\) & achieved direction of a splitting stage & Lemma~\ref{lem:splitting-coset},
+  \eqref{eq:PQ-def} \\
+\(\omega(n_1)\) & number of distinct prime divisors of \(n_1\) & \S3, proof of
+  Lemma~\ref{lem:steering} \\
+\(\mathrm{stage}(u,v)\) & the stage \(k\) that first claims \((u,v)\) & \S4 \\
+\(\mathrm{hit}(u,v)\) & index of the first individual line covering \((u,v)\) & \S4 \\
+\hline
+\end{tabular}
+\end{center}
 
 \begin{thebibliography}{9}
 
