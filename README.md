@@ -45,6 +45,26 @@ community:
 
 The report is licensed CC BY; the code in this repository is MIT (see [`LICENSE`](LICENSE)).
 
+## arXiv preprint
+
+Submitted 2026-08-23 (submission `arXiv:submit/7983754`; the public arXiv identifier is assigned
+on announcement, typically the next business day — this section will be updated with the real id
+and abs/PDF links once known):
+
+> Jan Snellman, *On the directions occurring in lattice-line coverings of the integer plane*,
+> 21 pages, 10 figures. Categories: math.CO (primary), math.NT (secondary). MSC-class: 05B45
+> (Primary). Comments: Lean formalization of all results (due to LLM agent) included in the
+> `anc/` directory of the submission, and also available in this repository. License: CC BY 4.0.
+
+This is `article/lattice_line_covers_extended.tex` above, extending the LiTH-MAT-R report per LiU's
+own requested condition for arXiv submission — see `changes-wrt-report.md` for the full, dated
+record of every difference from the report.
+
+*(Note: the submission confirmation's secondary MSC-class field read `11431`, which is not a valid
+MSC 2020 code — most likely a typo for `11A41` (Primes; congruences), given the paper's Erdős/
+covering-congruences framing in §5. Worth checking and fixing via an arXiv metadata revision once
+the submission is live.)*
+
 ## Repository layout
 
 - **`article/`** — three versions of the write-up, at different stages:
@@ -62,7 +82,8 @@ The report is licensed CC BY; the code in this repository is MIT (see [`LICENSE`
     `changes-wrt-report.md` for the full, dated record of every difference. Not yet submitted or
     accepted anywhere; `arxiv/make-arxiv-package.sh` assembles the actual submission bundle
     (`.tex`, only the figures it uses, and an `anc/` directory with the Typst working draft and
-    the full Lean formalization) once it's ready to go.
+    the full Lean formalization). **Submitted to arXiv 2026-08-23** — see
+    [arXiv preprint](#arxiv-preprint) above.
 - **`lean/`** — the complete Lean 4 formalization of the main theorem.
   - [`PROOF.md`](lean/PROOF.md) — the theorem statement in plain language, and step-by-step
     instructions to independently verify the proof yourself.
