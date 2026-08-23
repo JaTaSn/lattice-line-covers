@@ -1,4 +1,12 @@
 % Changelog (reverse chronological):
+% 2026-08-23 08:45 - Claude: added Figures~\ref{fig:coveragetime} (stage(u,v), discrete palette)
+%   and~\ref{fig:linehittingtime} (hit(u,v), the finer per-line invariant -- Jan's own shower
+%   thought), both purely exploratory like Figure~\ref{fig:discmeasure}. The second is deliberately
+%   rendered larger than every other figure in the manuscript (bleeds past \textwidth into the
+%   margins via \makebox+minipage), at Jan's explicit request ("a magnificent Sun to their lesser
+%   planets"). Added \usepackage{caption} for \captionsetup (needed to keep that figure's caption
+%   at normal text width despite the wider image). Source images generated in the ai-workspace
+%   sibling project (projects/lattice-line-covers/code/{plot_coverage_time,plot_line_hitting_time}.py).
 % 2026-08-09 21:37 - Claude: renamed lattice_line_covers_arxiv.tex -> lattice_line_covers_preprint.tex
 %   (and .pdf likewise), at Jan's request, now that four rounds of review are done and the article
 %   is being published (as-is content, no rewording) into the public lattice-line-covers repo and
@@ -25,6 +33,7 @@
 \usepackage{hyperref}
 \usepackage{orcidlink}
 \usepackage{graphicx}
+\usepackage{caption}
 \newcommand{\doi}[1]{\href{https://doi.org/#1}{doi:#1}}
 \emergencystretch=3em
 \usepackage{tikz}
@@ -950,6 +959,64 @@ came about.
   (dark purple = early, yellow-green = late). Purely exploratory --- not used anywhere else in this
   manuscript.}
   \label{fig:discmeasure}
+\end{figure}
+
+Two further exploratory pictures, again purely illustrative, follow the proof's own mechanism
+rather than the directions it realizes. The \emph{coverage invariant} established above
+(\eqref{eq:main-coverage-invariant}--\eqref{eq:main-coverage}) says that a point \((u,v)\in\Z^2\)
+is claimed by exactly one stage \(k\), namely the unique \(k\) with \((u,v)\in R_{k-1}\setminus
+R_k\); write \(\mathrm{stage}(u,v)=k\) for that index. The enumeration \((z_k)\) used throughout
+the proof to decide reservations can be any enumeration of \(\Z^2\) in which every point has finite
+index; the run behind Figure~\ref{fig:coveragetime} takes the concrete choice of ordering points by
+\(L^\infty\)-distance from the origin, breaking ties lexicographically.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/coverage_time.png}
+  \caption{\(\mathrm{stage}(u,v)\) over a \(51\times51\) window (\(N=25\)) of the run behind
+  Figure~\ref{fig:directions}. Left: the full window --- stage \(1\) alone (gold) already claims
+  \(97.0\%\) of it, since the first direction excludes only a single residue class. Right: stage
+  \(1\) hidden, revealing that of the three residual columns visible on the left, only the one
+  nearest the origin keeps recursing (through stages \(3\)--\(7\), telescoping inward as \(|y|\)
+  grows), while the other two are fully resolved by stage \(2\) alone and never revisited --- a
+  direct consequence of \(z_k\) being enumerated by distance from the origin, so whichever residual
+  region sits closest is exactly the one reopened next.}
+  \label{fig:coveragetime}
+\end{figure}
+
+Stage \(k\) claims \(R_{k-1}\setminus R_k\) all at once, via every line \(\ell_{(P_k,Q_k),c}\) of
+that stage's direction \((P_k,Q_k)\) needed to cover it (Lemma~\ref{lem:splitting-partition}) --- so
+\(\mathrm{stage}\) conflates many distinct lines into one value. A finer invariant tracks the
+individual line rather than the stage: enumerate the set \(S=\{\ell_{(P_k,Q_k),c}\}\) of lines
+actually used by the construction as \(S=\bigcup_j\{s_j\}\), indexing each line \(s_j=(P,Q,c)\) the
+first time the same \(L^\infty\) enumeration \((z_k)\) lands on one of its points, and set
+\[
+  \mathrm{hit}(u,v) \;=\; \min\{\,j : (u,v)\in\ell_{s_j}\,\}.
+\]
+Unlike \(\mathrm{stage}\), this has no direct role in the proof --- the construction only ever
+needs the coarser, stage-level disjointness --- but it exposes structure the stage-level picture
+cannot: at \(N=25\), \(887\) distinct lines are used, of which \(423\) meet the window in exactly
+\(3\) points and \(270\) in exactly \(4\), so \(\mathrm{hit}\) is a genuinely fine-grained ordinal,
+plotted in Figure~\ref{fig:linehittingtime} on a continuous scale rather than the discrete palette
+of Figure~\ref{fig:coveragetime}.
+
+\begin{figure}[htbp]
+  \centering
+  \makebox[\textwidth][c]{\includegraphics[width=1.32\textwidth]{figures/line_hitting_time.png}}
+  \captionsetup{width=0.94\textwidth}
+  \caption{\(\mathrm{hit}(u,v)\) over the same \(51\times51\) window. The concentric \emph{square}
+  (not circular) rings are the \(L^\infty\) enumeration made visible. The three low-\(\mathrm{hit}\)
+  blobs aligned at \(x=-15,0,15\) are a single mechanism repeated: stage \(1\)'s shallow direction
+  \((15,-2)\) places three window-points of the \emph{same} line \(15\) apart in \(x\) (for
+  instance \((0,2)\), \((-15,4)\), \((15,0)\) all lie on \(\ell_{(15,-2),-30}\)); since \(\mathrm{hit}\)
+  is assigned at a line's first discovery and one representative always sits near the origin, its
+  far echoes inherit the same tiny index for free, landing at nearly the same \(|y|\) because the
+  direction is so shallow. The thin seam exactly at \(x=0\) is a different mechanism: those points
+  are almost always the sole window-representative of a deep-recursion line (coefficients up to
+  \(P\approx2.6\times10^6\) at \(N=25\)), so \(\mathrm{hit}\) there tracks \(|y|\) alone rather
+  than \(\max(|x|,|y|)\), a slower growth law that reads as a seam cutting through the square
+  rings.}
+  \label{fig:linehittingtime}
 \end{figure}
 
 \begin{remark}
