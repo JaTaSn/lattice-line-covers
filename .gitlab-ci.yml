@@ -1,5 +1,13 @@
 # .gitlab-ci.yml -- changelog
 #
+# 2026-08-25: added a `pages` job, publishing the report, the extended write-up
+# and a doc-gen4 rendering of the Lean formalization to GitLab Pages. GitLab's
+# file browser serves .html as source, so the formalization is unreadable in the
+# repository itself; Pages is what makes it viewable. The job is consistent with
+# the rule stated below -- it PUBLISHES an artifact and writes nothing back to
+# the repository, needs no access token, and builds nothing (doc-gen4 is run
+# locally and its output committed under lean/docs/).
+#
 # 2026-08-21: created. A single CHECK job. It reads the committed PDFs and fails
 # the pipeline if any contains unresolved LaTeX cross-references ("??").
 #
@@ -107,3 +115,34 @@ check-pdf-references:
         echo "-------------------------------------------------------------------"
       fi
       exit $status
+
+
+# ---------------------------------------------------------------------------
+# GitLab Pages
+#
+# Assembles `public/` from files already committed. Nothing is generated here:
+# the Lean documentation under lean/docs/ is produced locally by doc-gen4 and
+# committed, precisely so that this job stays a copy operation. See
+# lean/docs/README.md for how to regenerate it -- and in particular for why the
+# documented `lake build ...:docs` invocation is the wrong one (it documents the
+# entire Mathlib import closure).
+#
+# Same discipline as the check job above: no writes to the repository, no token.
+# ---------------------------------------------------------------------------
+pages:
+  stage: deploy
+  image: alpine:3.20
+  script:
+    - mkdir -p public
+    - cp pages/index.html public/index.html
+    - cp article/lattice_line_covers_lith-mat-r-2026-02.pdf public/
+    - cp article/lattice_line_covers_extended.pdf public/
+    - cp verification-code/density_directions.png public/
+    - cp -r lean/docs public/lean
+    - rm -f public/lean/README.md
+    - echo "published $(find public -type f | wc -l) files"
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

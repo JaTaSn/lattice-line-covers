@@ -20,6 +20,14 @@ theorem statement and a non-expert guide to checking this yourself.
 directions spread out steadily around the circle of directions, steered toward golden-angle
 equidistribution.](verification-code/density_directions.png)
 
+## Read it online
+
+**<https://jansn19.gitlab-pages.liu.se/lattice-line-covers/>** — the report, the extended write-up,
+and a browsable rendering of the Lean formalization generated with
+[doc-gen4](https://github.com/leanprover/doc-gen4). GitLab's file browser serves `.html` as source,
+so the documentation under [`lean/docs/`](lean/docs/) is only readable through Pages (or by cloning
+and opening `lean/docs/index.html`).
+
 ## Published version
 
 The write-up is published, open access, as a technical report in Linköping University's

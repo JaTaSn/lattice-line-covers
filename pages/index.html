@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lattice-line coverings of the integer plane</title>
+<style>
+  :root { --bg:#fdfdfc; --fg:#1a1a18; --muted:#5d5d57; --rule:#e0e0da;
+          --link:#1c5d99; --card:#f6f6f3; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#16161a; --fg:#e6e6e1; --muted:#a0a099; --rule:#32323a;
+            --link:#7fb3d9; --card:#1e1e24; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+         font:16px/1.6 Georgia,'Times New Roman',serif; padding:3rem 1.25rem; }
+  main { max-width:46rem; margin:0 auto; }
+  h1 { font-size:1.85rem; line-height:1.25; margin:0 0 .3rem; font-weight:600; }
+  .sub { color:var(--muted); font-size:1.02rem; margin:0 0 2rem; }
+  h2 { font-size:1.1rem; margin:2.4rem 0 .7rem; font-weight:600;
+       border-bottom:1px solid var(--rule); padding-bottom:.35rem; }
+  a { color:var(--link); }
+  ul { padding-left:1.2rem; }
+  .cards { display:grid; gap:.9rem; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr)); margin:1.2rem 0; }
+  .card { background:var(--card); border:1px solid var(--rule); border-radius:.5rem;
+          padding:1rem 1.1rem; text-decoration:none; color:inherit; display:block; }
+  .card h3 { margin:0 0 .35rem; font-size:1rem; font-weight:600; color:var(--link); }
+  .card p { margin:0; font-size:.9rem; color:var(--muted); }
+  figure { margin:1.6rem 0; }
+  figure img { width:100%; height:auto; border:1px solid var(--rule); border-radius:.4rem; background:#fff; }
+  figcaption { font-size:.85rem; color:var(--muted); margin-top:.5rem; }
+  footer { margin-top:3rem; padding-top:1rem; border-top:1px solid var(--rule);
+           font-size:.85rem; color:var(--muted); }
+  code { font-family:ui-monospace,Menlo,Consolas,monospace; font-size:.88em; }
+</style>
+</head>
+<body>
+<main>
+
+<h1>On the directions occurring in lattice-line coverings of the integer plane</h1>
+<p class="sub">Jan Snellman &middot; Matematiska Institutionen, Link&ouml;pings Universitet</p>
+
+<p>There is a family of straight lines, each through at least two points of the integer lattice
+&#8484;&sup2; &mdash; so each with a well-defined rational <em>direction</em> &mdash; such that</p>
+<ul>
+  <li>every lattice point lies on at least one line of the family,</li>
+  <li>no two lines of <em>different</em> direction ever cross at a lattice point, and</li>
+  <li>the set of directions used is <b>dense</b> in the space of all directions
+      (&#8477;P&sup1;), even though only countably many are ever realized.</li>
+</ul>
+
+<figure>
+  <img src="density_directions.png"
+       alt="Realized line-directions of the density construction after 10, 20 and 100 steps, spreading around the circle of directions.">
+  <figcaption>Realized directions after 10, 20 and 100 steps &mdash; steered toward
+  golden-angle equidistribution.</figcaption>
+</figure>
+
+<h2>Read it</h2>
+<div class="cards">
+  <a class="card" href="lattice_line_covers_lith-mat-r-2026-02.pdf">
+    <h3>The report &rarr;</h3>
+    <p>LiTH-MAT-R 2026:02, 13 pp. Published open access by Link&ouml;ping University Electronic
+       Press.</p>
+  </a>
+  <a class="card" href="lean/">
+    <h3>The Lean formalization &rarr;</h3>
+    <p>The construction and proof, end to end in Lean&nbsp;4 + Mathlib: zero <code>sorry</code>,
+       zero custom axioms. Browsable documentation.</p>
+  </a>
+  <a class="card" href="lattice_line_covers_extended.pdf">
+    <h3>Extended version &rarr;</h3>
+    <p>The longer write-up, with the Lean annotations and the fuller reference list.</p>
+  </a>
+</div>
+
+<h2>Published, deposited, registered</h2>
+<ul>
+  <li>Report: DOI <a href="https://doi.org/10.3384/LiTH-MAT-R-2026-02">10.3384/LiTH-MAT-R-2026-02</a>,
+      full text (CC&nbsp;BY) via
+      <a href="https://urn.kb.se/resolve?urn=urn:nbn:se:liu:diva-226766">DiVA</a>.</li>
+  <li>Software deposit, all versions:
+      <a href="https://doi.org/10.5281/zenodo.21916621">10.5281/zenodo.21916621</a>.</li>
+  <li>The formalization is prepared for the
+      <a href="https://palomar-registry.org/">Palomar registry</a> &mdash; see
+      <code>Challenge.lean</code> and <code>Solution.lean</code> in the
+      <a href="lean/">documentation</a>.</li>
+</ul>
+
+<footer>
+  <p>Source: <a href="https://gitlab.liu.se/jansn19/lattice-line-covers">gitlab.liu.se/jansn19/lattice-line-covers</a>.
+  &copy;&nbsp;2026 Jan Snellman.</p>
+  <p>The reformulation, the rigidity and coset lemmas, the recursive construction and both rounds of
+  error-correction were found by Claude (Anthropic), working with the author in an interactive
+  session &mdash; as an assistant, not a co-author. See the report&rsquo;s Acknowledgements.</p>
+</footer>
+
+</main>
+</body>
+</html>
