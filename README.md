@@ -25,6 +25,15 @@ theorem statement and a non-expert guide to checking this yourself.
 directions spread out steadily around the circle of directions, steered toward golden-angle
 equidistribution.](verification-code/density_directions.png)
 
+## Mirrors
+
+The canonical repository is on [gitlab.liu.se](https://gitlab.liu.se/jansn19/lattice-line-covers).
+It is **push-mirrored automatically** to
+[github.com/JaTaSn/lattice-line-covers](https://github.com/JaTaSn/lattice-line-covers), because the
+[Palomar registry](https://palomar-registry.org/) can only fetch from a public GitHub repository.
+Push to GitLab; GitHub follows within a minute. Do not commit to the GitHub copy — it is a mirror,
+and divergent refs are discarded.
+
 ## The rendered site
 
 <https://jansn19.gitlab-pages.liu.se/lattice-line-covers/> carries the report, the extended
