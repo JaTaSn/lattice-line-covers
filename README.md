@@ -1,5 +1,10 @@
 # lattice-line-covers
 
+### 📖 Read this online: **<https://jansn19.gitlab-pages.liu.se/lattice-line-covers/>**
+*The report, the extended write-up, and a browsable rendering of the Lean formalization.*
+
+---
+
 A family of straight lines, each passing through at least two points of the integer lattice
 $\mathbb{Z}^2$ (so each has a well-defined, rational *direction*), that covers every point of the
 lattice, such that
@@ -20,13 +25,14 @@ theorem statement and a non-expert guide to checking this yourself.
 directions spread out steadily around the circle of directions, steered toward golden-angle
 equidistribution.](verification-code/density_directions.png)
 
-## Read it online
+## The rendered site
 
-**<https://jansn19.gitlab-pages.liu.se/lattice-line-covers/>** — the report, the extended write-up,
-and a browsable rendering of the Lean formalization generated with
+<https://jansn19.gitlab-pages.liu.se/lattice-line-covers/> carries the report, the extended
+write-up, and the Lean formalization rendered with
 [doc-gen4](https://github.com/leanprover/doc-gen4). GitLab's file browser serves `.html` as source,
-so the documentation under [`lean/docs/`](lean/docs/) is only readable through Pages (or by cloning
-and opening `lean/docs/index.html`).
+so the documentation under [`lean/docs/`](lean/docs/) is **only readable through Pages** — or by
+cloning and opening `lean/docs/index.html` locally. Published by the `pages` job in
+[`.gitlab-ci.yml`](.gitlab-ci.yml), which writes nothing back to the repository.
 
 ## Published version
 
