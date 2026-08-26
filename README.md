@@ -141,6 +141,24 @@ replacement (v2) or an email to arXiv admin. Since a stray secondary code is cos
 proportionate thing is to fold the correction into whatever v2 the paper gets anyway — unless the
 Palomar submission or a journal makes accurate classification worth a version of its own.
 
+## Palomar registry
+
+The Lean formalization of Theorem 1 is registered in the
+[Palomar registry](https://palomar-registry.org/) of Lean-verified mathematics:
+
+> **[PALOMAR-2026-08-26-000003](https://palomar-registry.org/entry.html?id=PALOMAR-2026-08-26-000003&version=1)**,
+> version 1, registered 2026-08-26.
+
+Palomar re-checks the proof with its own [Comparator](https://github.com/leanprover/comparator)
+harness at a pinned commit and publishes the exact statement, the libraries it depends on, and its
+automated review. This entry registers commit `68f90ff9d90cb71af2c76eb1291a6ddf564cf4fb`, project
+directory `lean`, Comparator configuration `lean/config.json`; the declaration verified is
+`Palomar.main_theorem`, and the source it names is arXiv:2608.22550. The automated review — which
+is part of the public record, and which no person read — reports **"No problems were identified"**.
+
+A corrected or extended formalization goes in as a *new version of this same record*, not as a
+fresh submission.
+
 ## Repository layout
 
 - **`article/`** — three versions of the write-up, at different stages:

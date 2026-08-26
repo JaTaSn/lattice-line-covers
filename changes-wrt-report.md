@@ -20,8 +20,9 @@ because that is what breaks cross-references from other work.
 
 ## 2026-08-23 — submitted to arXiv
 
-Jan submitted `article/lattice_line_covers_extended.tex` to arXiv (submission
-`arXiv:submit/7983754`; public arXiv id pending the next announcement). Not a content change —
+Jan submitted `article/lattice_line_covers_extended.tex` to arXiv, announced as
+**[arXiv:2608.22550](https://arxiv.org/abs/2608.22550)** (v1, 2026-08-23 18:53:54 UTC; the
+submission ticket, before an identifier was assigned, was `arXiv:submit/7983754`). Not a content change —
 noted here as a milestone, since everything above this point in the log describes how the
 submitted version diverges from the frozen LiTH-MAT-R report. See the repository README's own
 [arXiv preprint](README.md#arxiv-preprint) section for the full submission metadata.
