@@ -15,9 +15,15 @@ project:
     members of different direction are disjoint, so no lattice point is covered twice in different
     directions; and (iv) the directions that occur are dense in the space RP^1 of line directions,
     that is, every angle in [0, pi) is approximated to within any epsilon by the direction of some
-    member. The construction is recursive, adjoining one new direction at a time while a rigidity
-    lemma and a coset lemma keep the earlier lines intact. Only Theorem 1 is formalized; the
-    paper's further remarks and discussion are not.
+    member. The construction is recursive and works on nested regions: a chain of cosets
+    Z^2 = R_0 > R_1 > R_2 > ... is built, and at stage k the region R_k is partitioned into
+    sub-cosets of a new coprime direction, one of which is reserved to become R_{k+1} while lines
+    of that direction claim all the others. Disjointness is a consequence of that partition rather
+    than of any criterion for when two individual lines meet: distinct sub-cosets of a region are
+    disjoint, each stage's lines stay inside the sub-cosets they claim, and the regions claimed at
+    distinct stages are therefore disjoint. Earlier lines survive untouched because everything a
+    later stage touches lies inside the reserved region. Only Theorem 1 is formalized; the paper's
+    further remarks and discussion are not.
   authors: ["Jan Snellman"]
   responsible_maintainers: ["Jan Snellman <https://orcid.org/0009-0002-6676-5068>"]
   license: "MIT"
