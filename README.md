@@ -22,8 +22,15 @@ on Lean's three standard foundational axioms. See [`lean/PROOF.md`](lean/PROOF.m
 theorem statement and a non-expert guide to checking this yourself.
 
 ![Realized line-directions of the density construction, plotted after 10, 20, and 100 steps — the
-directions spread out steadily around the circle of directions, steered toward golden-angle
-equidistribution.](verification-code/density_directions.png)
+directions spread out steadily around the circle of directions.](verification-code/density_directions.png)
+
+*About that figure.* It is an **illustration, not the formalized construction**: it comes from
+`verification-code/`, which drives the recursion with an equidistributed golden-angle target
+sequence, because that is what looks best on a plot. The formalized `mainFamily` steers toward
+`thetaRat` instead — an enumeration of the rationals, clamped to `[0, π)`. The difference is not an
+oversight. Theorem 1 claims only that the realized directions are **dense**, and density is exactly
+what `thetaRat` is proved to have; equidistribution is a strictly stronger property than the
+theorem needs, so the formalization does not pay for it.
 
 ## Mirrors
 
@@ -113,9 +120,11 @@ Ready to paste into arXiv's MSC-class field:
 05B40 (Primary) 11H31, 52C15, 11B25, 11B57, 68V20 (Secondary)
 ```
 
-`11J71` / `11K06` (*distribution modulo one*) would also have been defensible, for the
-equidistributed golden-angle target sequence driving the density argument, but are not adopted
-here — six codes is already generous, and the density argument is a means rather than the subject.
+`11J71` / `11K06` (*distribution modulo one*) would have been defensible for the article's
+equidistributed golden-angle target sequence, but are not adopted here — six codes is already
+generous, the density argument is a means rather than the subject, and the formalization does not
+use that sequence at all (it steers toward an enumeration of the rationals; see the note under the
+figure above).
 
 **How to fix it.** arXiv states only that *journal reference, DOI and report number* can be added
 without generating a new version; MSC-class is not in that list, so changing it means either a

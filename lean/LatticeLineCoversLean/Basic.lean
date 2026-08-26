@@ -3,11 +3,30 @@ import Mathlib
 /-!
 # Rigidity lemma
 
-Formalizes the "Rigidity" lemma from `lattice-line-covers/article/lattice_line_covers.tex`
+Formalizes the "Rigidity" lemma from `lattice-line-covers/article/lattice_line_covers_extended.tex`
 (`\S 2`, Lemma `rigidity`): for primitive directions `(p_i,q_i)`, `(p_j,q_j)` with
 `Δ = p_i q_j - p_j q_i ≠ 0`, the lattice lines `φ_{(p_i,q_i)} = c_i` and
 `φ_{(p_j,q_j)} = c_j` meet at a lattice point iff `Δ` divides both
 `p_i c_j - p_j c_i` and `q_i c_j - q_j c_i` (the Cramer's-rule numerators).
+
+## Which lemmas here are actually used downstream
+
+`rigidity` and `coset` are the article's `\S 2` lemmas, and in the *article* they carry the
+disjointness argument. **The formalization does not use either of them.** They have no call site;
+`#print axioms LatticeLineCovers.main_theorem` does not reach them. They are kept because they are
+genuine content of the paper and formalizing them is part of formalizing `\S 2` faithfully — not
+because anything downstream depends on them.
+
+What the formal proof of different-direction disjointness actually uses is the coset-partition
+route further down this file and in `MainRecursion.lean`:
+
+  `splitting_partition → RsubCoset_disjoint_of_ne → claims_disjoint`
+                       `→ det_eq_zero_of_lline_eq → family_valid`
+
+each stage of which is about *regions*, not about when two individual lines meet. So the article and
+the formalization prove the same theorem by two different arguments; see `fidelity.divergences` in
+`formalization.yaml`. Do not read a call to `rigidity` into the proof, and do not delete these two
+lemmas on the grounds that nothing calls them.
 -/
 
 namespace LatticeLineCovers
@@ -16,7 +35,9 @@ namespace LatticeLineCovers
 lattice lines of primitive direction `(p,q)`. -/
 def phi (p q x y : ℤ) : ℤ := q * x - p * y
 
-/-- **Rigidity lemma.** -/
+/-- **Rigidity lemma.** (`\S 2` of the article. *Not used elsewhere in this development* — the
+formal disjointness argument goes through `splitting_partition` instead; see the module docstring
+above.) -/
 theorem rigidity (p_i q_i p_j q_j c_i c_j : ℤ)
     (hΔ : p_i * q_j - p_j * q_i ≠ 0) :
     (∃ x y : ℤ, phi p_i q_i x y = c_i ∧ phi p_j q_j x y = c_j) ↔
@@ -39,7 +60,9 @@ theorem rigidity (p_i q_i p_j q_j c_i c_j : ℤ)
 /-- `ℓ_{(p,q),c}`, the lattice line of direction `(p,q)` at level `c`. -/
 def lline (p q c : ℤ) : Set (ℤ × ℤ) := {pt | phi p q pt.1 pt.2 = c}
 
-/-- **Coset lemma.** -/
+/-- **Coset lemma.** (`\S 2` of the article. *Not used elsewhere in this development* — the regions
+the recursion actually manipulates are `Rcoset`/`RsubCoset` below, and it is `splitting` that
+relates them to unions of lines; see the module docstring above.) -/
 theorem coset (p q x₀ y₀ : ℤ) (hpq : IsCoprime p q) :
     ⋃ k : ℤ, lline p q (phi p q x₀ y₀ + p * q * k) =
       {pt : ℤ × ℤ | pt.1 ≡ x₀ [ZMOD p] ∧ pt.2 ≡ y₀ [ZMOD q]} := by

@@ -86,9 +86,24 @@ automation:
 
 fidelity:
   divergences: >
-    None. The Lean statement is a verbatim restatement of Theorem 1 of the paper, in the Palomar
-    namespace; see the alignment note below. No hypothesis was strengthened, no conclusion
+    STATEMENT: none. The Lean statement is a verbatim restatement of Theorem 1 of the paper, in the
+    Palomar namespace; see the alignment note below. No hypothesis was strengthened, no conclusion
     weakened, and nothing in Theorem 1 is left informal.
+
+    PROOF: two divergences, both deliberate. (1) Disjointness of lines of different direction is
+    argued differently. The article derives it from the Rigidity and Coset lemmas of section 2 --
+    a criterion for when two individual lines meet. The formalization instead partitions each
+    region into sub-cosets and carries a nested-region invariant:
+    splitting_partition -> RsubCoset_disjoint_of_ne -> claims_disjoint, together with
+    det_eq_zero_of_lline_eq, feeding family_valid. Rigidity and Coset are nonetheless formalized,
+    as LatticeLineCovers.rigidity and LatticeLineCovers.coset in Basic.lean, for fidelity with
+    section 2; they have no call site and main_theorem does not depend on them. (2) The concrete
+    target sequence differs. The article's figures and verification code use an equidistributed
+    golden-angle sequence; the formalization uses thetaRat (Density.lean), an enumeration of the
+    rationals clamped to [0, pi). Theorem 1 asserts only that the realized directions are dense,
+    and dense is all thetaRat is proved to be (thetaRat_dense) -- equidistribution is strictly
+    stronger than the theorem needs, so the weaker, cheaper property was formalized instead.
+    Neither divergence weakens the theorem: both are alternative routes to the same statement.
 
 review:
   status: "author-verified"
