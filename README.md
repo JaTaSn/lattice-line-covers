@@ -70,23 +70,50 @@ The report is licensed CC BY; the code in this repository is MIT (see [`LICENSE`
 
 ## arXiv preprint
 
-Submitted 2026-08-23 (submission `arXiv:submit/7983754`; the public arXiv identifier is assigned
-on announcement, typically the next business day — this section will be updated with the real id
-and abs/PDF links once known):
+Announced as **[arXiv:2608.22550](https://arxiv.org/abs/2608.22550)**
+([PDF](https://arxiv.org/pdf/2608.22550), [HTML](https://arxiv.org/html/2608.22550)), submitted
+2026-08-23:
 
 > Jan Snellman, *On the directions occurring in lattice-line coverings of the integer plane*,
-> 21 pages, 10 figures. Categories: math.CO (primary), math.NT (secondary). MSC-class: 05B45
-> (Primary). Comments: Lean formalization of all results (due to LLM agent) included in the
-> `anc/` directory of the submission, and also available in this repository. License: CC BY 4.0.
+> 21 pages, 10 figures. Subjects: Combinatorics (math.CO); Number Theory (math.NT).
+> MSC classes: 05B45 (Primary), 11431 (Secondary). Comments: Lean formalization of all results
+> (due to llm agent) included in `anc` directory, and also available at the GitLab repository.
+> License: CC BY 4.0.
 
 This is `article/lattice_line_covers_extended.tex` above, extending the LiTH-MAT-R report per LiU's
 own requested condition for arXiv submission — see `changes-wrt-report.md` for the full, dated
 record of every difference from the report.
 
-*(Note: the submission confirmation's secondary MSC-class field read `11431`, which is not a valid
-MSC 2020 code — most likely a typo for `11A41` (Primes; congruences), given the paper's Erdős/
-covering-congruences framing in §5. Worth checking and fixing via an arXiv metadata revision once
-the submission is live.)*
+### A note on the MSC classes
+
+The live record reads `05B45 (Primary) 11431 (Secondary)`. **`11431` is not a valid MSC code** —
+verified against the official [MSC 2020 list](https://msc2020.org/MSC_2020.pdf), where it does not
+occur, and it cannot be valid in any edition: MSC codes are always two digits, a letter, two digits.
+
+An earlier note here guessed it was a typo for `11A41` (Primes). That guess was probably wrong on
+both counts. **`11H31`** — *Lattice packing and covering (number-theoretic aspects)* — is a
+**single**-character substitution (`H` → `4`) where `11A41` needs two, and it is a far better fit
+for a paper about covering `Z^2` by lattice lines than "Primes" would be.
+
+Suggested classification, should the metadata be revised:
+
+| Code | | Why |
+|---|---|---|
+| **05B40** | Combinatorial aspects of packing and covering | Arguably the better primary than `05B45`: this is a *covering* result, not a tessellation or tiling one. |
+| **11H31** | Lattice packing and covering (number-theoretic aspects) | The number-theoretic mirror of 05B40, and almost certainly what `11431` was meant to be. |
+| **52C15** | Packing and covering in 2 dimensions | The discrete-geometry mirror; 05B40, 11H31 and 52C15 all cross-reference one another. |
+| **11B25** | Arithmetic progressions | The standard home for covering systems of congruences, which §5 casts this construction as the two-dimensional analogue of. |
+| **11B57** | Farey sequences | The rigidity lemma is exactly a statement about Farey neighbours / the Stern–Brocot tree. |
+| **68V20** | Formalization of mathematics in connection with theorem provers | The Lean formalization is a headline feature, and this is how a reader looking for formalized results would find it. |
+
+`11J71` / `11K06` (*distribution modulo one*) would also be defensible, for the equidistributed
+golden-angle target sequence driving the density argument.
+
+**How to fix it.** arXiv states only that *journal reference, DOI and report number* can be added
+without generating a new version; MSC-class is not in that list, so changing it means either a
+replacement (v2) or an email to arXiv admin. Since a stray secondary code is cosmetic, the
+proportionate thing is to fold the correction into whatever v2 the paper gets anyway — unless the
+Palomar submission or a journal makes accurate classification worth a version of its own.
 
 ## Repository layout
 
@@ -99,14 +126,14 @@ the submission is live.)*
     LiTH-MAT-R 2026:02 (see [Published version](#published-version) above); the `.pdf` here is the
     exact file hosted on DiVA, not a local rebuild. A polished, mechanically-derived descendant of
     the Typst draft above, in LaTeX for proper bibliography/TikZ support.
-  - `lattice_line_covers_extended.tex`/`.pdf` — the pre-submission working draft heading toward
-    arXiv/HAL, diverging from the frozen report as review adds exposition, figures and remarks
-    (no proof or numbered-statement content has changed as of this writing) — see
-    `changes-wrt-report.md` for the full, dated record of every difference. Not yet submitted or
-    accepted anywhere; `arxiv/make-arxiv-package.sh` assembles the actual submission bundle
-    (`.tex`, only the figures it uses, and an `anc/` directory with the Typst working draft and
-    the full Lean formalization). **Submitted to arXiv 2026-08-23** — see
-    [arXiv preprint](#arxiv-preprint) above.
+  - `lattice_line_covers_extended.tex`/`.pdf` — **the version on arXiv**, announced 2026-08-23 as
+    [arXiv:2608.22550](https://arxiv.org/abs/2608.22550). It extends the frozen LiTH-MAT-R report
+    with additional exposition, figures and remarks, at LiU's own requested condition for arXiv
+    submission; no proof or numbered-statement content differs, and
+    `changes-wrt-report.md` records every difference, dated. `arxiv/make-arxiv-package.sh`
+    assembles the submission bundle (`.tex`, only the figures it uses, and an `anc/` directory
+    carrying the Typst working draft and the full Lean formalization). HAL remains a possible
+    further deposit; nothing has been submitted there.
 - **`lean/`** — the complete Lean 4 formalization of the main theorem.
   - [`PROOF.md`](lean/PROOF.md) — the theorem statement in plain language, and step-by-step
     instructions to independently verify the proof yourself.
