@@ -11,20 +11,31 @@ project:
   license: "MIT"
 
 sources:
-  - title: "Lattice line covers"
+  - title: "On the directions occurring in lattice-line coverings of the integer plane"
     authors: ["Jan Snellman"]
+    id: "arXiv:2608.22550"
     type: "original-proof"
     location: "Theorem 1"
     relationship: "formalizes"
-    license: "MIT"
+    license: "CC BY 4.0"
     author_endorsement: "participated"
+    note: >
+      Also published, open access, as LiTH-MAT-R 2026:02, Linkoping University Electronic Press,
+      DOI 10.3384/LiTH-MAT-R-2026-02 (DiVA urn:nbn:se:liu:diva-226766). The arXiv version extends
+      the report with additional exposition and figures; no numbered statement differs. The
+      repository itself is archived on Zenodo, DOI 10.5281/zenodo.21916621 (all versions).
+
+repository:
+  role: "substantive-development"
 
 related_formalizations: []
 
 classification:
   arxiv: ["math.CO", "math.NT"]
-  # msc2020 deliberately left blank -- worth Jan's own confirmation rather than a guessed code.
-  msc2020: []
+  # 05B40 primary; the rest secondary. Confirmed by the author 2026-08-25 and checked against the
+  # official MSC 2020 list. Note the arXiv record still carries 05B45 + an invalid "11431"; see
+  # the repository README for the correction, which rides along with any future v2.
+  msc2020: ["05B40", "11H31", "52C15", "11B25", "11B57", "68V20"]
 
 status:
   scope: >
@@ -43,26 +54,29 @@ status:
       comparator_config: "config.json"
       literature_dependencies: []
 
-  automation:
-    methods:
-      - method: "agent"
-        models: []  # specific model version(s) not recorded during development; left blank
-                     # rather than guessed -- Jan may want to fill this in from his own records.
-        framework: "Claude Code"
-        tool_setup: >
-          Interactive session between the author and Claude (Anthropic), plan/delegate/verify
-          methodology -- see STRATEGY.md in this directory for the working process, and
-          ../HISTORY.md for the narrated development history including mistakes found and fixed
-          along the way (one caught by numerical simulation, one by independent review).
-        prompting_notes: ""
-    spend_usd: ""
-    notes: >
-      The mathematics was developed in a Typst working draft (../article/lattice_line_covers_pedantic.typ,
-      kept in this repository unmodified) that doubled as the formalization's own guide, with
-      inline "formalization status" annotations tracking progress lemma by lemma. See STRATEGY.md.
+automation:
+  methods:
+    - method: "agent"
+      models: []  # specific model version(s) not recorded during development; left blank
+                   # rather than guessed -- Jan may want to fill this in from his own records.
+      framework: "Claude Code"
+      tool_setup: >
+        Interactive session between the author and Claude (Anthropic), plan/delegate/verify
+        methodology -- see STRATEGY.md in this directory for the working process, including
+        the mistakes found and fixed along the way (one caught by numerical simulation, one by
+        independent review).
+      prompting_notes: ""
+  spend_usd: ""
+  notes: >
+    The mathematics was developed in a Typst working draft (../article/lattice_line_covers_pedantic.typ,
+    kept in this repository unmodified) that doubled as the formalization's own guide, with
+    inline "formalization status" annotations tracking progress lemma by lemma. See STRATEGY.md.
 
 fidelity:
-  divergences: ""
+  divergences: >
+    None. The Lean statement is a verbatim restatement of Theorem 1 of the paper, in the Palomar
+    namespace; see the alignment note below. No hypothesis was strengthened, no conclusion
+    weakened, and nothing in Theorem 1 is left informal.
 
 review:
   status: "author-verified"
@@ -75,7 +89,7 @@ review:
 alignment:
   namespace: "Palomar"
   statements:
-    - source: "Theorem 1 (article/lattice_line_covers.tex)"
+    - source: "Theorem 1 (article/lattice_line_covers_extended.tex, = arXiv:2608.22550)"
       lean: "Palomar.main_theorem"
       module: "Solution.lean"
       status: "proved"
