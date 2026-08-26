@@ -53,7 +53,16 @@ classification:
   # 05B40 primary; the rest secondary. Confirmed by the author 2026-08-25 and checked against the
   # official MSC 2020 list. Note the arXiv record still carries 05B45 + an invalid "11431"; see
   # the repository README for the correction, which rides along with any future v2.
-  msc2020: ["05B40", "11H31", "52C15", "11B25", "11B57", "68V20"]
+  #
+  # 68V20 (Formalization of mathematics in connection with theorem provers) is DELIBERATELY ABSENT
+  # here, though the README still recommends it for the arXiv record. The two lists answer
+  # different questions and are allowed to differ. This field, per the formalization.yaml standard,
+  # "records what the formalized result is *about* ... for the mathematics rather than for the
+  # source document" -- and 68V20 describes the use of a theorem prover, not any mathematics in the
+  # result or its proof. On arXiv, where the classification describes the document and the
+  # formalization is a prominent feature of it, 68V20 remains defensible. Do not "restore" it here
+  # for consistency with the README; the asymmetry is the point.
+  msc2020: ["05B40", "11H31", "52C15", "11B25", "11B57"]
 
 status:
   scope: >
@@ -113,11 +122,36 @@ fidelity:
 
 review:
   status: "author-verified"
-  reviewers: ["Jan Snellman"]
+  reviewers:
+    - "Jan Snellman (author; verified the final manuscript and the build)"
+    - "Claude (Anthropic) -- AUTOMATED review by fresh subagent instances, not a human reviewer;
+       run from Claude Code session f5f0edbb-abe5-4e27-97b6-0084ee0b3b7a on 2026-08-02; specific
+       model version not recorded, consistent with automation.methods[].models above"
   notes: >
-    Independently verifiable by anyone: see ../lean/PROOF.md for exact steps (lake build, grep
-    for sorry, #print axioms on the main theorem). No sorry, no custom axioms -- checked
-    mechanically, not just asserted.
+    NO INDEPENDENT HUMAN HAS REVIEWED THIS. The status author-verified means what it says: the
+    author checked it. Two separate things are easily conflated here, so both are set out.
+
+    (1) The automated review, and its basis. Before and alongside formalization, the informal
+    proof (the Typst draft article/lattice_line_covers_pedantic.typ) was put through adversarial
+    review rounds performed by fresh Claude subagent instances -- separate contexts launched in
+    parallel with an identical brief and no shared history, so that agreement between them was
+    evidence rather than an echo. Scope: the proof's own reasoning -- recursive bookkeeping,
+    coverage, disjointness, density -- with the Splitting and Steering lemmas handed over as
+    machine-verified black boxes to be trusted rather than rechecked, and attention directed at
+    the Steering-Splitting interface as the likeliest site of a second bug. The main theorem got
+    two independent reviewers; other components got one. Basis: reading the prose proof. These
+    agents executed nothing and proved nothing; their output is argument, not verification.
+    It was not idle: the rounds found real defects, including an undischarged case in the
+    coverage induction and a non-sequitur in the density argument, both fixed before formalization.
+    This is what the phrase "independent review" in acknowledgements refers to, and it should be
+    read as automated adversarial reading, not as peer review.
+
+    (2) The actual independent check is the machine, not any reviewer. Lean's kernel checks the
+    proof; nothing above needs to be trusted for that. Anyone can reproduce it -- see
+    ../lean/PROOF.md for exact steps (lake build, grep for sorry, #print axioms on the main
+    theorem). No sorry, no custom axioms: [propext, Classical.choice, Quot.sound] only, checked
+    mechanically rather than asserted. That check is worth more than every review round above,
+    and is the reason this submission exists.
 
 alignment:
   namespace: "Palomar"

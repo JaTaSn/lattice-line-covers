@@ -120,6 +120,15 @@ Ready to paste into arXiv's MSC-class field:
 05B40 (Primary) 11H31, 52C15, 11B25, 11B57, 68V20 (Secondary)
 ```
 
+**`68V20` is on this list but deliberately *not* in `lean/formalization.yaml`, and that asymmetry
+is intentional.** The two lists answer different questions. arXiv's MSC-class describes *the
+document*, and the formalization is a prominent feature of it, so 68V20 earns its place. The
+`classification` block in `formalization.yaml`, by the standard's own wording, "records what the
+formalized result is *about* … for the mathematics rather than for the source document" — and
+68V20 describes the use of a theorem prover, not any mathematics in the result or its proof.
+Palomar's automated review objected to it there on exactly that ground, and was right to.
+Don't reconcile the two lists by adding it back.
+
 `11J71` / `11K06` (*distribution modulo one*) would have been defensible for the article's
 equidistributed golden-angle target sequence, but are not adopted here — six codes is already
 generous, the density argument is a means rather than the subject, and the formalization does not
