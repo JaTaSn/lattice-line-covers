@@ -7,14 +7,26 @@ version: "v0.4"
 
 project:
   name: "lattice-line-covers"
+  description: >
+    A Lean 4 formalization of Theorem 1 of arXiv:2608.22550: there is a family of lattice lines
+    covering the integer plane whose set of realized directions is dense. Concretely, a family F
+    of subsets of Z^2 is exhibited such that (i) every member is a genuine lattice line, the
+    nonempty solution set of Px + Qy = c with P, Q coprime; (ii) the members cover Z^2; (iii) two
+    members of different direction are disjoint, so no lattice point is covered twice in different
+    directions; and (iv) the directions that occur are dense in the space RP^1 of line directions,
+    that is, every angle in [0, pi) is approximated to within any epsilon by the direction of some
+    member. The construction is recursive, adjoining one new direction at a time while a rigidity
+    lemma and a coset lemma keep the earlier lines intact. Only Theorem 1 is formalized; the
+    paper's further remarks and discussion are not.
   authors: ["Jan Snellman"]
+  responsible_maintainers: ["Jan Snellman <https://orcid.org/0009-0002-6676-5068>"]
   license: "MIT"
 
 sources:
   - title: "On the directions occurring in lattice-line coverings of the integer plane"
     authors: ["Jan Snellman"]
     id: "arXiv:2608.22550"
-    type: "original-proof"
+    type: "preprint"
     location: "Theorem 1"
     relationship: "formalizes"
     license: "CC BY 4.0"
