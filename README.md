@@ -95,19 +95,27 @@ both counts. **`11H31`** — *Lattice packing and covering (number-theoretic asp
 **single**-character substitution (`H` → `4`) where `11A41` needs two, and it is a far better fit
 for a paper about covering `Z^2` by lattice lines than "Primes" would be.
 
-Suggested classification, should the metadata be revised:
+**The correct classification**, which the metadata should be revised to (agreed 2026-08-25); each
+code checked against the official MSC 2020 list rather than recalled:
 
-| Code | | Why |
-|---|---|---|
-| **05B40** | Combinatorial aspects of packing and covering | Arguably the better primary than `05B45`: this is a *covering* result, not a tessellation or tiling one. |
-| **11H31** | Lattice packing and covering (number-theoretic aspects) | The number-theoretic mirror of 05B40, and almost certainly what `11431` was meant to be. |
-| **52C15** | Packing and covering in 2 dimensions | The discrete-geometry mirror; 05B40, 11H31 and 52C15 all cross-reference one another. |
-| **11B25** | Arithmetic progressions | The standard home for covering systems of congruences, which §5 casts this construction as the two-dimensional analogue of. |
-| **11B57** | Farey sequences | The rigidity lemma is exactly a statement about Farey neighbours / the Stern–Brocot tree. |
-| **68V20** | Formalization of mathematics in connection with theorem provers | The Lean formalization is a headline feature, and this is how a reader looking for formalized results would find it. |
+| | Code | | Why |
+|---|---|---|---|
+| **Primary** | **05B40** | Combinatorial aspects of packing and covering | The better primary than the current `05B45`: this is a *covering* result, not a tessellation or tiling one. |
+| Secondary | **11H31** | Lattice packing and covering (number-theoretic aspects) | The number-theoretic mirror of 05B40, and almost certainly what `11431` was meant to be. |
+| Secondary | **52C15** | Packing and covering in 2 dimensions (discrete geometry) | The discrete-geometry mirror; 05B40, 11H31 and 52C15 all cross-reference one another. |
+| Secondary | **11B25** | Arithmetic progressions | Where the covering-systems-of-congruences literature sits, and §5 casts this construction as the two-dimensional analogue of exactly that. |
+| Secondary | **11B57** | Farey sequences | The rigidity lemma is a statement about Farey neighbours and the Stern–Brocot tree. |
+| Secondary | **68V20** | Formalization of mathematics in connection with theorem provers | The Lean formalization is a headline feature, and this is how a reader hunting formalized results finds it. |
 
-`11J71` / `11K06` (*distribution modulo one*) would also be defensible, for the equidistributed
-golden-angle target sequence driving the density argument.
+Ready to paste into arXiv's MSC-class field:
+
+```
+05B40 (Primary) 11H31, 52C15, 11B25, 11B57, 68V20 (Secondary)
+```
+
+`11J71` / `11K06` (*distribution modulo one*) would also have been defensible, for the
+equidistributed golden-angle target sequence driving the density argument, but are not adopted
+here — six codes is already generous, and the density argument is a means rather than the subject.
 
 **How to fix it.** arXiv states only that *journal reference, DOI and report number* can be added
 without generating a new version; MSC-class is not in that list, so changing it means either a
